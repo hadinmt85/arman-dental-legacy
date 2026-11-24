@@ -3,29 +3,29 @@ import { Icon } from "@/components/Icon";
 
 export default function NotFound() {
   return (
-    <section className="relative overflow-hidden bg-navy-900 py-24 text-white sm:py-32">
-      <div className="absolute inset-0 bg-grid mask-fade opacity-60" />
-      <div className="absolute -right-24 top-0 h-72 w-72 rounded-full bg-gold-500/10 blur-3xl" />
+    <section className="section">
+      <div className="container-x">
+        <div className="mx-auto max-w-xl border-t border-ink/15 pt-10 text-center">
+          <span className="text-[11px] font-medium tracking-[0.2em] text-muted">
+            ۴۰۴
+          </span>
+          <h1 className="mt-4 text-[clamp(2.2rem,5vw,3.8rem)] font-black leading-[1.15] tracking-[-0.04em] text-ink">
+            این صفحه پیدا نشد.
+          </h1>
+          <p className="mx-auto mt-4 max-w-sm text-sm leading-8 text-muted">
+            ممکن است آدرس تغییر کرده باشد یا صفحه حذف شده باشد. از صفحه اصلی شروع
+            کن یا نوبتت را رزرو کن.
+          </p>
 
-      <div className="container-x relative mx-auto max-w-xl text-center">
-        <span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border border-gold-400/30 bg-white/5 text-gold-300">
-          <Icon name="tooth" className="h-8 w-8" />
-        </span>
-        <p className="mt-6 text-6xl font-black text-gold-300">۴۰۴</p>
-        <h1 className="mt-3 text-2xl sm:text-3xl">این صفحه پیدا نشد</h1>
-        <p className="mt-4 text-sm leading-7 text-navy-100">
-          ممکن است آدرس تغییر کرده باشد یا صفحه حذف شده باشد. می‌توانید از صفحه
-          اصلی شروع کنید یا نوبت خود را رزرو کنید.
-        </p>
-
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link href="/" className="btn btn-gold">
-            صفحه اصلی
-            <Icon name="arrowLeft" className="h-4 w-4" />
-          </Link>
-          <Link href="/appointment" className="btn btn-on-dark">
-            رزرو نوبت
-          </Link>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link href="/" className="btn btn-dark btn-sm">
+              صفحه اصلی
+              <Icon name="arrowLeft" className="h-3.5 w-3.5" />
+            </Link>
+            <Link href="/appointment" className="btn btn-outline btn-sm">
+              رزرو نوبت
+            </Link>
+          </div>
         </div>
       </div>
     </section>

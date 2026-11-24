@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { CtaBand } from "@/components/CtaBand";
 import { Icon } from "@/components/Icon";
@@ -27,17 +28,17 @@ const timeline = [
   {
     year: "۱۳۹۱",
     title: "فلوشیپ ایمپلنتولوژی",
-    text: "گذراندن دوره تخصصی ایمپلنت در دانشگاه فرایبورگ آلمان.",
+    text: "دوره تخصصی ایمپلنت در دانشگاه فرایبورگ آلمان.",
   },
   {
     year: "۱۳۹۴",
     title: "تأسیس کلینیک آرمان",
-    text: "راه‌اندازی کلینیک تخصصی در سعادت‌آباد با تمرکز بر درمان‌های زیبایی.",
+    text: "راه‌اندازی کلینیک تخصصی در سعادت‌آباد با تمرکز بر درمان زیبایی.",
   },
   {
     year: "۱۴۰۱",
-    title: "توسعه بخش دیجیتال",
-    text: "افزودن اسکنر سه‌بعدی، نرم‌افزار طراحی لبخند و گاید جراحی.",
+    title: "بخش دیجیتال",
+    text: "افزودن اسکن سه‌بعدی، طراحی لبخند و گاید جراحی.",
   },
   {
     year: "۱۴۰۴",
@@ -48,24 +49,20 @@ const timeline = [
 
 const values = [
   {
-    icon: "user" as const,
     title: "تصمیم مشارکتی",
-    text: "شما در انتخاب روش درمان شریک هستید؛ همه گزینه‌ها با مزایا و محدودیت‌ها توضیح داده می‌شود.",
+    text: "همه گزینه‌ها با مزایا و محدودیت‌هایشان توضیح داده می‌شود؛ انتخاب نهایی با توست.",
   },
   {
-    icon: "shield" as const,
     title: "کمترین مداخله",
-    text: "تا زمانی که درمان محافظه‌کارانه پاسخ دهد، سراغ روش‌های تهاجمی نمی‌رویم.",
+    text: "تا وقتی درمان محافظه‌کارانه جواب می‌دهد، سراغ روش‌های تهاجمی نمی‌رویم.",
   },
   {
-    icon: "heart" as const,
     title: "راحتی بیمار",
-    text: "کنترل درد، کاهش استرس و احترام به زمان شما، بخشی از پروتکل هر جلسه است.",
+    text: "کنترل درد، کاهش استرس و احترام به زمان تو بخشی از هر جلسه است.",
   },
   {
-    icon: "award" as const,
-    title: "پیگیری بلندمدت",
-    text: "نتیجه درمان فقط در روز آخر مهم نیست؛ سال‌ها بعد هم باید پایدار بماند.",
+    title: "نتیجه پایدار",
+    text: "درمان فقط برای روز آخر نیست؛ باید سال‌ها بعد هم درست کار کند.",
   },
 ];
 
@@ -77,127 +74,94 @@ export default function AboutPage() {
       <PageHero
         crumb="درباره پزشک"
         eyebrow="بنیان‌گذار کلینیک"
-        title="دندانپزشکی که جزئیات را جدی می‌گیرد"
+        title="دندانپزشکی که جزئیات را جدی می‌گیرد."
         description="دکتر آرمان رضایی با ۱۸ سال تجربه بالینی، تمرکز خود را بر ایمپلنت دیجیتال، طراحی لبخند و درمان‌های کم‌تهاجم گذاشته است."
       >
-        <div className="flex flex-wrap gap-3">
-          <Link href="/appointment" className="btn btn-gold">
-            رزرو مشاوره
-            <Icon name="arrowLeft" className="h-4 w-4" />
-          </Link>
-          <a href={`tel:${site.phoneHref}`} className="btn btn-on-dark">
-            <Icon name="phone" className="h-4 w-4" />
-            تماس با پذیرش
-          </a>
-        </div>
+        <Link href="/appointment" className="btn btn-dark">
+          رزرو مشاوره
+          <Icon name="arrowLeft" className="h-4 w-4" />
+        </Link>
       </PageHero>
 
       <section className="section">
-        <div className="container-x grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
-          <div className="relative overflow-hidden rounded-4xl bg-navy-900 p-8">
-            <div className="absolute inset-0 bg-grid opacity-40" />
-            <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-gold-500/15 blur-3xl" />
-            <div className="absolute -bottom-24 -left-16 h-56 w-56 rounded-full border border-white/10" />
+        <div className="container-x grid gap-10 md:grid-cols-12 md:items-start">
+          <div className="md:col-span-5">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-sand">
+              <Image
+                src="/images/doctor.jpg"
+                alt="پرتره دکتر آرمان رضایی"
+                fill
+                priority
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover object-[50%_20%]"
+              />
+            </div>
 
-            <div className="relative flex h-full flex-col">
-              <div className="relative mx-auto grid h-32 w-32 place-items-center rounded-full border border-gold-400/40 bg-navy-800/80 text-4xl font-black text-gold-300">
-                <span className="absolute inset-2 rounded-full border border-dashed border-gold-400/20" />
-                آر
+            <div className="mt-4 grid grid-cols-2 gap-4">
+              <div className="border-t border-line pt-4">
+                <p className="text-2xl font-extrabold tracking-tight text-ink">
+                  ۱۸ سال
+                </p>
+                <p className="mt-1 text-[10px] text-muted">تجربه بالینی</p>
               </div>
-
-              <div className="mt-6 text-center">
-                <h2 className="text-xl text-white">{doctor.name}</h2>
-                <p className="mt-1.5 text-xs text-gold-300">{doctor.role}</p>
-              </div>
-
-              <div className="mt-6 flex flex-wrap justify-center gap-2">
-                {doctor.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-semibold text-navy-100"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-8 space-y-3 border-t border-white/10 pt-6 text-[11px]">
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-navy-300">سابقه کار</span>
-                  <span className="font-bold text-white">۱۸ سال</span>
-                </div>
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-navy-300">ایمپلنت انجام‌شده</span>
-                  <span className="font-bold text-white">۳٬۵۰۰+</span>
-                </div>
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-navy-300">عضو انجمن</span>
-                  <span className="font-bold text-white">
-                    ایمپلنتولوژی ایران
-                  </span>
-                </div>
-              </div>
-
-              <div className="mt-auto pt-8">
-                <a
-                  href={`tel:${site.phoneHref}`}
-                  className="btn btn-on-dark btn-sm w-full"
-                >
-                  <Icon name="phone" className="h-3.5 w-3.5" />
-                  تماس مستقیم با کلینیک
-                </a>
+              <div className="border-t border-line pt-4">
+                <p className="text-2xl font-extrabold tracking-tight text-ink">
+                  ۳٬۵۰۰+
+                </p>
+                <p className="mt-1 text-[10px] text-muted">ایمپلنت موفق</p>
               </div>
             </div>
           </div>
 
-          <div className="rounded-4xl border border-navy-900/8 bg-white p-7 shadow-card sm:p-10">
-            <SectionHeading
-              align="start"
-              eyebrow="داستان حرفه‌ای"
-              title="از دانشگاه تهران تا کلینیک آرمان"
-            />
+          <div className="md:col-span-6 md:col-start-7">
+            <span className="eyebrow">داستان حرفه‌ای</span>
+            <h2 className="mt-4 text-[clamp(1.9rem,3.8vw,3rem)] font-extrabold leading-[1.22] tracking-[-0.03em] text-ink">
+              از دانشگاه تهران
+              <br />
+              تا کلینیک آرمان.
+            </h2>
 
-            <div className="mt-5 space-y-4 text-sm leading-8 text-navy-800">
+            <div className="mt-6 space-y-4 text-sm leading-8 text-ink-soft">
               {doctor.longBio.map((paragraph) => (
                 <p key={paragraph.slice(0, 24)}>{paragraph}</p>
               ))}
             </div>
 
-            <div className="mt-7 grid gap-3 sm:grid-cols-2">
-              {[
-                "دکترای دندانپزشکی — دانشگاه علوم پزشکی تهران",
-                "فلوشیپ ایمپلنتولوژی — دانشگاه فرایبورگ آلمان",
-                "عضو انجمن ایمپلنتولوژی ایران",
-                "مدرس دوره‌های طراحی لبخند دیجیتال",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="flex items-start gap-2.5 rounded-2xl bg-cream/70 p-3.5 text-[11px] leading-5 text-navy-800"
-                >
-                  <span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-gold-100 text-gold-700">
-                    <Icon name="check" className="h-2.5 w-2.5" />
-                  </span>
-                  {item}
-                </div>
-              ))}
-            </div>
-
-            <blockquote className="mt-6 rounded-2xl border-r-4 border-gold-500 bg-gold-50/60 px-5 py-4 text-sm leading-7 text-gold-700">
+            <blockquote className="mt-8 border-r-2 border-forest-600 pr-5 text-sm leading-8 text-forest-800">
               «بهترین درمان، درمانی است که با شرایط زندگی بیمار هماهنگ باشد؛ نه
               فقط بهترین گزینه روی کاغذ.»
             </blockquote>
+
+            <ul className="mt-8 border-t border-line">
+              {[
+                ["تحصیلات", "دکترای دندانپزشکی — دانشگاه تهران"],
+                ["تخصص", "فلوشیپ ایمپلنتولوژی — فرایبورگ"],
+                ["عضویت", "انجمن ایمپلنتولوژی ایران"],
+                ["آموزش", "مدرس دوره‌های طراحی لبخند"],
+              ].map(([label, value]) => (
+                <li
+                  key={label}
+                  className="flex items-start justify-between gap-4 border-b border-line py-3.5 text-xs"
+                >
+                  <span className="text-muted">{label}</span>
+                  <span className="text-left font-semibold text-ink">
+                    {value}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-navy-900/8 bg-white py-10">
-        <div className="container-x grid grid-cols-2 gap-6 sm:grid-cols-4">
+      <section className="border-y border-line bg-white">
+        <div className="container-x grid grid-cols-2 gap-8 py-10 sm:grid-cols-4">
           {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-2xl font-extrabold text-navy-900 sm:text-3xl">
+            <div key={stat.label}>
+              <p className="text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
                 {stat.value}
               </p>
-              <p className="mt-1.5 text-[11px] text-muted">{stat.label}</p>
+              <p className="mt-1.5 text-[10px] text-muted">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -207,55 +171,63 @@ export default function AboutPage() {
         <div className="container-x">
           <SectionHeading
             eyebrow="مسیر حرفه‌ای"
-            title="نقطه‌های مهم در ۱۸ سال تجربه"
-            description="از تحصیل تا امروز؛ مسیری که با تمرکز بر دقت، آموزش مستمر و درمان کم‌تهاجم شکل گرفته است."
+            title="نقطه‌های مهم در ۱۸ سال."
+            description="از تحصیل تا امروز؛ مسیری که با دقت، آموزش مستمر و درمان کم‌تهاجم شکل گرفته است."
           />
 
-          <ol className="relative mx-auto mt-10 max-w-3xl space-y-6 border-s border-navy-900/10 ps-6 sm:ps-8">
+          <ol className="mt-10 border-t border-line">
             {timeline.map((item) => (
-              <li key={item.year} className="relative">
-                <span className="absolute -start-[31px] top-1 grid h-3.5 w-3.5 place-items-center rounded-full border-2 border-gold-500 bg-cream sm:-start-[39px]" />
-                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span className="rounded-full bg-navy-900 px-2.5 py-0.5 text-[10px] font-bold text-gold-300">
-                    {item.year}
-                  </span>
-                  <h3 className="text-sm font-extrabold text-navy-900">
-                    {item.title}
-                  </h3>
-                </div>
-                <p className="mt-1.5 text-xs leading-6 text-muted">
+              <li
+                key={item.year}
+                className="grid gap-2 border-b border-line py-5 sm:grid-cols-[90px_1fr_1fr] sm:gap-6"
+              >
+                <span className="text-xs font-semibold tabular-nums text-forest-700">
+                  {item.year}
+                </span>
+                <span className="text-sm font-semibold text-ink">
+                  {item.title}
+                </span>
+                <span className="text-xs leading-6 text-muted">
                   {item.text}
-                </p>
+                </span>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      <section className="bg-white">
+      <section className="border-y border-line bg-sand-soft">
         <div className="container-x section">
-          <SectionHeading
-            eyebrow="اصول کاری"
-            title="چهار تصمیمی که همیشه ثابت می‌ماند"
-          />
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {values.map((value) => (
-              <div
-                key={value.title}
-                className="rounded-3xl border border-navy-900/8 bg-cream/60 p-6 transition hover:-translate-y-1 hover:border-gold-400/50 hover:bg-white hover:shadow-card"
-              >
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-white text-navy-800 shadow-sm">
-                  <Icon name={value.icon} className="h-5 w-5" />
-                </span>
-                <h3 className="mt-4 text-sm font-extrabold text-navy-900">
-                  {value.title}
-                </h3>
-                <p className="mt-2 text-xs leading-6 text-muted">
-                  {value.text}
-                </p>
+          <div className="grid gap-10 md:grid-cols-12">
+            <div className="md:col-span-5">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-sand">
+                <Image
+                  src="/images/care.jpg"
+                  alt="گفت‌وگوی تیم درمان با بیمار"
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover"
+                />
               </div>
-            ))}
+            </div>
+            <div className="md:col-span-6 md:col-start-7">
+              <SectionHeading
+                eyebrow="اصول کاری"
+                title="چهار تصمیمی که همیشه ثابت می‌ماند."
+              />
+              <div className="mt-8 grid gap-6 sm:grid-cols-2">
+                {values.map((value) => (
+                  <div key={value.title} className="border-t border-ink/15 pt-4">
+                    <h3 className="text-sm font-bold text-ink">
+                      {value.title}
+                    </h3>
+                    <p className="mt-2 text-xs leading-6 text-muted">
+                      {value.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -264,51 +236,47 @@ export default function AboutPage() {
         <div className="container-x">
           <SectionHeading
             eyebrow="تیم درمان"
-            title="همراهانی که مسیر درمان را کامل می‌کنند"
-            description="در آرمان، هر بیمار توسط تیمی هماهنگ از متخصصان و دستیاران همراهی می‌شود."
+            title="همراهانی که مسیر را کامل می‌کنند."
           />
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
+          <div className="mt-10 border-t border-line">
             {doctors.map((member) => (
               <div
                 key={member.id}
-                className="flex flex-col gap-5 rounded-3xl border border-navy-900/8 bg-white p-6 shadow-card sm:flex-row sm:items-start"
+                className="grid gap-4 border-b border-line py-7 sm:grid-cols-[1fr_1.4fr_auto] sm:items-center"
               >
-                <span className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-navy-900 text-xl font-black text-gold-300">
-                  {member.name.replace("دکتر ", "").charAt(0)}
-                </span>
                 <div>
-                  <h3 className="text-base font-extrabold text-navy-900">
-                    {member.name}
-                  </h3>
-                  <p className="mt-1 text-[11px] text-gold-600">
-                    {member.role}
-                  </p>
-                  <p className="mt-2 text-xs leading-6 text-muted">
-                    {member.bio}
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {member.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full bg-navy-50 px-2.5 py-1 text-[10px] font-semibold text-navy-700"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  <h3 className="text-lg font-bold text-ink">{member.name}</h3>
+                  <p className="mt-1 text-xs text-forest-700">{member.role}</p>
+                </div>
+                <p className="max-w-md text-xs leading-6 text-muted">
+                  {member.bio}
+                </p>
+                <div className="flex flex-wrap gap-1.5 sm:justify-end">
+                  {member.tags.slice(0, 2).map((tag) => (
+                    <span key={tag} className="chip">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
           </div>
+
+          <div className="mt-10 flex flex-wrap items-center gap-6">
+            <Link href="/appointment" className="btn btn-dark btn-sm">
+              رزرو نوبت
+              <Icon name="arrowLeft" className="h-3.5 w-3.5" />
+            </Link>
+            <a href={`tel:${site.phoneHref}`} className="link-underline">
+              تماس با پذیرش
+            </a>
+          </div>
         </div>
       </section>
 
-      <div className="pb-20 sm:pb-24">
-        <CtaBand
-          title="دوست دارید درباره برنامه درمانی خود بدانید؟"
-          text="در یک جلسه مشاوره، وضعیت دهان و دندان شما بررسی و پلن درمانی متناسب با شرایط‌تان ارائه می‌شود."
-        />
+      <div className="pb-20 sm:pb-28">
+        <CtaBand />
       </div>
     </>
   );

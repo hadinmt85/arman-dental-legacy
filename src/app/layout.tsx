@@ -5,9 +5,9 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { site } from "@/lib/site";
 
-const vazirmatn = localFont({
-  src: "./fonts/Vazirmatn-Variable.woff2",
-  variable: "--font-vazirmatn",
+const estedad = localFont({
+  src: "./fonts/Estedad-Variable.woff2",
+  variable: "--font-estedad",
   weight: "100 900",
   display: "swap",
   fallback: ["Tahoma", "Segoe UI", "sans-serif"],
@@ -39,11 +39,13 @@ export const metadata: Metadata = {
     title: "کلینیک دندانپزشکی آرمان | ایمپلنت، لمینت و زیبایی دندان",
     description: site.description,
     url: "/",
+    images: ["/images/hero.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "کلینیک دندانپزشکی آرمان",
     description: site.description,
+    images: ["/images/hero.jpg"],
   },
   robots: {
     index: true,
@@ -52,7 +54,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a2237",
+  themeColor: "#f7f6f2",
   colorScheme: "light",
 };
 
@@ -62,12 +64,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="fa"
       dir="rtl"
       data-scroll-behavior="smooth"
-      className={`${vazirmatn.variable} h-full`}
+      className={`${estedad.variable} h-full`}
     >
-      <body className="flex min-h-full flex-col bg-cream text-ink antialiased">
+      <body className="flex min-h-full flex-col bg-paper text-ink antialiased">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:right-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-navy-900 focus:px-5 focus:py-2.5 focus:text-sm focus:font-bold focus:text-white"
+          className="sr-only focus:not-sr-only focus:absolute focus:right-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-ink focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-white"
         >
           پرش به محتوای اصلی
         </a>

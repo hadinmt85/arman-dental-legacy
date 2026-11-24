@@ -183,110 +183,103 @@ export function AppointmentForm() {
 
   if (booking) {
     return (
-      <div className="card overflow-hidden">
-        <div className="bg-navy-900 px-6 py-10 text-center sm:px-10">
-          <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-emerald-400/15 text-emerald-300 ring-1 ring-emerald-400/30">
-            <Icon name="checkCircle" className="h-9 w-9" />
-          </span>
-          <h2 className="mt-5 text-2xl text-white">نوبت شما ثبت شد</h2>
-          <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-navy-100">
-            کارشناسان پذیرش برای تأیید نهایی و راهنمایی پیش از مراجعه با شما تماس
-            می‌گیرند.
+      <div className="rounded-3xl border border-line bg-white p-6 sm:p-10">
+        <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-forest-100 text-forest-700">
+          <Icon name="checkCircle" className="h-7 w-7" />
+        </div>
+        <h2 className="mt-6 text-center text-2xl font-extrabold tracking-tight text-ink">
+          نوبتت ثبت شد.
+        </h2>
+        <p className="mx-auto mt-3 max-w-sm text-center text-sm leading-7 text-muted">
+          کارشناسان پذیرش برای تأیید نهایی و راهنمایی پیش از مراجعه با تو تماس
+          می‌گیرند.
+        </p>
+
+        <div className="mx-auto mt-7 max-w-md rounded-2xl border border-line bg-paper p-5 text-center">
+          <p className="text-[10px] text-muted">کد پیگیری نوبت</p>
+          <p
+            dir="ltr"
+            className="mt-1 text-lg font-extrabold tracking-[0.18em] text-ink"
+          >
+            {booking.id}
           </p>
         </div>
 
-        <div className="p-6 sm:p-8">
-          <div className="mx-auto max-w-md rounded-2xl border border-gold-500/30 bg-gold-50/60 p-5 text-center">
-            <p className="text-[11px] text-muted">کد پیگیری نوبت</p>
-            <p
-              dir="ltr"
-              className="mt-1 text-lg font-extrabold tracking-widest text-navy-900"
+        <dl className="mx-auto mt-7 max-w-md">
+          {[
+            ["خدمت", booking.serviceTitle],
+            ["پزشک", booking.doctorName],
+            ["تاریخ", formatStoredDate(booking.dateISO)],
+            ["ساعت", faDigits(booking.time)],
+            ["نام بیمار", `${booking.firstName} ${booking.lastName}`],
+            ["موبایل", faDigits(booking.phone)],
+          ].map(([label, value]) => (
+            <div
+              key={label}
+              className="flex items-center justify-between gap-4 border-b border-line py-3 last:border-0"
             >
-              {booking.id}
-            </p>
-          </div>
+              <dt className="text-[11px] text-muted">{label}</dt>
+              <dd className="text-left text-[11px] font-semibold text-ink">
+                {value}
+              </dd>
+            </div>
+          ))}
+        </dl>
 
-          <dl className="mx-auto mt-6 max-w-md space-y-3 text-sm">
-            {[
-              ["خدمت", booking.serviceTitle],
-              ["پزشک", booking.doctorName],
-              ["تاریخ", formatStoredDate(booking.dateISO)],
-              ["ساعت", faDigits(booking.time)],
-              ["نام بیمار", `${booking.firstName} ${booking.lastName}`],
-              ["موبایل", faDigits(booking.phone)],
-            ].map(([label, value]) => (
-              <div
-                key={label}
-                className="flex items-center justify-between gap-4 border-b border-dashed border-navy-900/10 pb-3 last:border-0"
-              >
-                <dt className="text-xs text-muted">{label}</dt>
-                <dd className="text-left text-xs font-bold text-navy-900">
-                  {value}
-                </dd>
-              </div>
-            ))}
-          </dl>
-
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <button
-              type="button"
-              onClick={resetForm}
-              className="btn btn-primary"
-            >
-              رزرو نوبت دیگر
-            </button>
-            <Link href="/" className="btn btn-outline">
-              بازگشت به صفحه اصلی
-            </Link>
-          </div>
-
-          <p className="mt-6 text-center text-[10px] leading-5 text-muted">
-            این نسخه نمایشی است؛ نوبت‌ها فقط در مرورگر شما ذخیره می‌شوند و پیامکی
-            ارسال نمی‌شود.
-          </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <button type="button" onClick={resetForm} className="btn btn-dark btn-sm">
+            رزرو نوبت دیگر
+          </button>
+          <Link href="/" className="btn btn-outline btn-sm">
+            بازگشت به خانه
+          </Link>
         </div>
+
+        <p className="mt-6 text-center text-[10px] leading-5 text-muted">
+          این نسخه نمایشی است؛ نوبت‌ها فقط در مرورگر تو ذخیره می‌شوند و پیامکی
+          ارسال نمی‌شود.
+        </p>
       </div>
     );
   }
 
   return (
     <div className="space-y-4">
-      <div className="card p-6 sm:p-8">
-        {/* Stepper */}
-        <ol className="flex items-center gap-2">
+      <div className="rounded-3xl border border-line bg-white p-6 sm:p-8">
+        <ol className="flex items-center gap-3">
           {stepTitles.map((title, index) => {
             const number = index + 1;
             const isDone = step > number;
             const isCurrent = step === number;
 
             return (
-              <li key={title} className="flex flex-1 items-center gap-2">
+              <li key={title} className="flex flex-1 items-center gap-2.5">
                 <span
-                  className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border text-[11px] font-bold transition ${
+                  className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border text-[10px] font-bold transition ${
                     isDone
-                      ? "border-emerald-400/40 bg-emerald-50 text-emerald-600"
+                      ? "border-forest-600 bg-forest-600 text-white"
                       : isCurrent
-                        ? "border-gold-500 bg-gold-500 text-navy-950"
-                        : "border-navy-900/10 bg-white text-muted"
+                        ? "border-ink bg-ink text-white"
+                        : "border-line bg-white text-muted"
                   }`}
                 >
                   {isDone ? (
-                    <Icon name="check" className="h-4 w-4" />
+                    <Icon name="check" className="h-3 w-3" />
                   ) : (
                     faDigits(number)
                   )}
                 </span>
                 <span
-                  className={`hidden text-[11px] font-bold sm:block ${
-                    isCurrent ? "text-navy-900" : "text-muted"
+                  className={`hidden text-[11px] font-medium sm:block ${
+                    isCurrent ? "text-ink" : "text-muted"
                   }`}
                 >
                   {title}
                 </span>
                 {index < stepTitles.length - 1 ? (
                   <span
-                    className={`me-1 h-px flex-1 ${
-                      isDone ? "bg-emerald-300" : "bg-navy-900/10"
+                    className={`hidden h-px flex-1 sm:block ${
+                      isDone ? "bg-forest-300" : "bg-line"
                     }`}
                   />
                 ) : null}
@@ -302,29 +295,29 @@ export function AppointmentForm() {
             if (step < 3) goNext();
             else submit();
           }}
-          className="mt-7"
+          className="mt-8"
         >
           {step === 1 ? (
-            <div className="animate-rise">
-              <h2 className="text-base font-extrabold text-navy-900">
-                چه خدمتی نیاز دارید؟
+            <div className="animate-fade">
+              <h2 className="text-base font-bold tracking-tight text-ink">
+                چه خدمتی نیاز داری؟
               </h2>
-              <p className="mt-1 text-xs text-muted">
-                اگر مطمئن نیستید، گزینه «مشاوره عمومی» را انتخاب کنید یا با
-                پذیرش تماس بگیرید.
+              <p className="mt-1.5 text-[11px] leading-6 text-muted">
+                اگر مطمئن نیستی، «مشاوره عمومی» را انتخاب کن یا با پذیرش تماس
+                بگیر.
               </p>
 
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div className="mt-5 grid gap-2.5 sm:grid-cols-2">
                 {services.map((service) => {
                   const selected = serviceId === service.id;
 
                   return (
                     <label
                       key={service.id}
-                      className={`relative flex cursor-pointer items-center gap-3 rounded-2xl border p-4 transition has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-gold-500/50 ${
+                      className={`relative flex cursor-pointer items-center gap-3 rounded-2xl border p-4 transition has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-forest-600/40 ${
                         selected
-                          ? "border-gold-500 bg-gold-50/60 ring-2 ring-gold-500/15"
-                          : "border-navy-900/10 hover:border-navy-900/25 hover:bg-navy-50/40"
+                          ? "border-ink bg-forest-50"
+                          : "border-line bg-white hover:border-line-strong"
                       }`}
                     >
                       <input
@@ -336,55 +329,55 @@ export function AppointmentForm() {
                         className="sr-only"
                       />
                       <span
-                        className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${
+                        className={`grid h-9 w-9 shrink-0 place-items-center rounded-full ${
                           selected
-                            ? "bg-navy-900 text-gold-300"
-                            : "bg-navy-50 text-navy-700"
+                            ? "bg-forest-600 text-white"
+                            : "bg-paper text-forest-700"
                         }`}
                       >
-                        <Icon name={service.icon} className="h-5 w-5" />
+                        <Icon name={service.icon} className="h-4 w-4" />
                       </span>
-                      <span className="min-w-0">
-                        <span className="block text-sm font-bold text-navy-900">
+                      <span className="min-w-0 flex-1">
+                        <span className="block text-sm font-semibold text-ink">
                           {service.title}
                         </span>
-                        <span className="mt-0.5 block text-[11px] text-muted">
+                        <span className="mt-0.5 block text-[10px] text-muted">
                           {service.price}
                         </span>
                       </span>
                       <span
-                        className={`ms-auto grid h-5 w-5 shrink-0 place-items-center rounded-full border ${
+                        className={`grid h-5 w-5 shrink-0 place-items-center rounded-full border ${
                           selected
-                            ? "border-gold-500 bg-gold-500 text-navy-950"
-                            : "border-navy-900/20 text-transparent"
+                            ? "border-ink bg-ink text-white"
+                            : "border-line text-transparent"
                         }`}
                       >
-                        <Icon name="check" className="h-3 w-3" />
+                        <Icon name="check" className="h-2.5 w-2.5" />
                       </span>
                     </label>
                   );
                 })}
               </div>
               {errors.service ? (
-                <p className="mt-3 text-xs font-semibold text-red-600">
+                <p className="mt-3 text-[11px] font-semibold text-red-600">
                   {errors.service}
                 </p>
               ) : null}
 
-              <h3 className="mt-7 text-base font-extrabold text-navy-900">
+              <h3 className="mt-8 text-sm font-bold text-ink">
                 پزشک معالج
               </h3>
-              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
                 {doctors.map((doctor) => {
                   const selected = doctorId === doctor.id;
 
                   return (
                     <label
                       key={doctor.id}
-                      className={`flex cursor-pointer items-start gap-3 rounded-2xl border p-4 transition has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-gold-500/50 ${
+                      className={`flex cursor-pointer items-start gap-3 rounded-2xl border p-4 transition has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-forest-600/40 ${
                         selected
-                          ? "border-navy-900/60 bg-navy-50/70"
-                          : "border-navy-900/10 hover:border-navy-900/25"
+                          ? "border-ink bg-forest-50"
+                          : "border-line bg-white hover:border-line-strong"
                       }`}
                     >
                       <input
@@ -395,14 +388,14 @@ export function AppointmentForm() {
                         onChange={() => setDoctorId(doctor.id)}
                         className="sr-only"
                       />
-                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-navy-900 text-xs font-bold text-gold-300">
+                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-forest-100 text-[11px] font-bold text-forest-800">
                         {doctor.name.replace("دکتر ", "").charAt(0)}
                       </span>
                       <span>
-                        <span className="block text-sm font-bold text-navy-900">
+                        <span className="block text-sm font-semibold text-ink">
                           {doctor.name}
                         </span>
-                        <span className="mt-1 block text-[11px] leading-5 text-muted">
+                        <span className="mt-1 block text-[10px] leading-5 text-muted">
                           {doctor.role}
                         </span>
                       </span>
@@ -414,20 +407,20 @@ export function AppointmentForm() {
           ) : null}
 
           {step === 2 ? (
-            <div className="animate-rise">
-              <h2 className="text-base font-extrabold text-navy-900">
+            <div className="animate-fade">
+              <h2 className="text-base font-bold tracking-tight text-ink">
                 روز و ساعت مراجعه
               </h2>
-              <p className="mt-1 text-xs text-muted">
-                روزهای جمعه تعطیل هستند. ساعت‌های خاکستری قابل انتخاب نیستند.
+              <p className="mt-1.5 text-[11px] leading-6 text-muted">
+                جمعه‌ها کلینیک تعطیل است. ساعت‌های کم‌رنگ قابل انتخاب نیستند.
               </p>
 
-              <div className="mt-4 flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+              <div className="mt-5 flex gap-2 overflow-x-auto pb-2 no-scrollbar">
                 {!ready
                   ? Array.from({ length: 7 }).map((_, index) => (
                       <div
                         key={index}
-                        className="h-[86px] min-w-[78px] animate-pulse rounded-2xl bg-navy-50"
+                        className="h-[82px] min-w-[74px] animate-pulse rounded-xl bg-paper"
                       />
                     ))
                   : days.map((day) => {
@@ -443,25 +436,25 @@ export function AppointmentForm() {
                             setErrors({});
                           }}
                           aria-pressed={selected}
-                          className={`min-w-[78px] rounded-2xl border px-3 py-3 text-center transition ${
+                          className={`min-w-[74px] rounded-xl border px-3 py-3 text-center transition ${
                             selected
-                              ? "border-gold-500 bg-navy-900 text-white shadow-card"
-                              : "border-navy-900/10 bg-white text-navy-900 hover:border-gold-400 hover:bg-gold-50/40"
+                              ? "border-ink bg-ink text-white"
+                              : "border-line bg-white text-ink hover:border-ink/30"
                           }`}
                         >
                           <span
                             className={`block text-[10px] ${
-                              selected ? "text-gold-300" : "text-muted"
+                              selected ? "text-white/60" : "text-muted"
                             }`}
                           >
                             {day.relative || day.weekday}
                           </span>
-                          <span className="mt-1 block text-xl font-extrabold">
+                          <span className="mt-1 block text-lg font-bold">
                             {day.day}
                           </span>
                           <span
-                            className={`mt-0.5 block text-[10px] ${
-                              selected ? "text-navy-100" : "text-muted"
+                            className={`mt-0.5 block text-[9px] ${
+                              selected ? "text-white/55" : "text-muted"
                             }`}
                           >
                             {day.month}
@@ -472,18 +465,16 @@ export function AppointmentForm() {
               </div>
 
               {errors.date ? (
-                <p className="mt-2 text-xs font-semibold text-red-600">
+                <p className="mt-2 text-[11px] font-semibold text-red-600">
                   {errors.date}
                 </p>
               ) : null}
 
               <div className="mt-6">
                 <div className="flex items-center justify-between gap-3">
-                  <h3 className="text-sm font-bold text-navy-900">
-                    ساعت‌های آزاد
-                  </h3>
+                  <h3 className="text-sm font-bold text-ink">ساعت‌های آزاد</h3>
                   {selectedDay ? (
-                    <span className="text-[11px] text-muted">
+                    <span className="text-[10px] text-muted">
                       {formatDayLong(selectedDay)}
                     </span>
                   ) : null}
@@ -494,13 +485,13 @@ export function AppointmentForm() {
                     {Array.from({ length: 7 }).map((_, index) => (
                       <div
                         key={index}
-                        className="h-12 animate-pulse rounded-xl bg-navy-50"
+                        className="h-11 animate-pulse rounded-lg bg-paper"
                       />
                     ))}
                   </div>
                 ) : !dateISO ? (
-                  <div className="mt-3 rounded-2xl border border-dashed border-navy-900/15 bg-cream/60 px-4 py-6 text-center text-xs text-muted">
-                    برای دیدن ساعت‌های آزاد، ابتدا یک روز را انتخاب کنید.
+                  <div className="mt-3 rounded-xl border border-dashed border-line-strong px-4 py-6 text-center text-[11px] text-muted">
+                    برای دیدن ساعت‌های آزاد، ابتدا یک روز را انتخاب کن.
                   </div>
                 ) : (
                   <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-4">
@@ -521,16 +512,16 @@ export function AppointmentForm() {
                             setErrors({});
                           }}
                           aria-pressed={selected}
-                          className={`rounded-xl border px-2 py-3 text-sm font-bold transition ${
+                          className={`rounded-lg border px-2 py-2.5 text-xs font-semibold transition ${
                             selected
-                              ? "border-gold-500 bg-gold-500 text-navy-950 shadow-sm"
+                              ? "border-ink bg-ink text-white"
                               : disabled
-                                ? "cursor-not-allowed border-navy-900/5 bg-navy-50/60 text-navy-300 line-through"
-                                : "border-navy-900/10 bg-white text-navy-800 hover:border-gold-500 hover:text-navy-900"
+                                ? "cursor-not-allowed border-line bg-paper text-muted/40 line-through"
+                                : "border-line bg-white text-ink hover:border-ink/40"
                           }`}
                         >
                           {faDigits(slot)}
-                          <span className="mt-0.5 block text-[9px] font-medium">
+                          <span className="mt-0.5 block text-[9px] font-normal">
                             {isBooked
                               ? "رزرو شده"
                               : isPast
@@ -546,23 +537,23 @@ export function AppointmentForm() {
                 )}
 
                 {errors.time ? (
-                  <p className="mt-2 text-xs font-semibold text-red-600">
+                  <p className="mt-2 text-[11px] font-semibold text-red-600">
                     {errors.time}
                   </p>
                 ) : null}
               </div>
 
-              <div className="mt-5 flex flex-wrap items-center gap-4 rounded-2xl bg-cream/80 px-4 py-3 text-[10px] text-muted">
+              <div className="mt-5 flex flex-wrap items-center gap-4 rounded-xl bg-paper px-4 py-3 text-[10px] text-muted">
                 <span className="inline-flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-gold-500" />
+                  <span className="h-2 w-2 rounded-full bg-ink" />
                   انتخاب‌شده
                 </span>
                 <span className="inline-flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-full border border-navy-900/20 bg-white" />
+                  <span className="h-2 w-2 rounded-full border border-line-strong bg-white" />
                   آزاد
                 </span>
                 <span className="inline-flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-navy-200" />
+                  <span className="h-2 w-2 rounded-full bg-line" />
                   غیرقابل انتخاب
                 </span>
               </div>
@@ -570,11 +561,11 @@ export function AppointmentForm() {
           ) : null}
 
           {step === 3 ? (
-            <div className="animate-rise">
-              <h2 className="text-base font-extrabold text-navy-900">
+            <div className="animate-fade">
+              <h2 className="text-base font-bold tracking-tight text-ink">
                 اطلاعات بیمار
               </h2>
-              <p className="mt-1 text-xs text-muted">
+              <p className="mt-1.5 text-[11px] leading-6 text-muted">
                 این اطلاعات فقط برای هماهنگی نوبت استفاده می‌شود.
               </p>
 
@@ -599,7 +590,7 @@ export function AppointmentForm() {
                   {errors.firstName ? (
                     <p
                       id="firstName-error"
-                      className="mt-1.5 text-[11px] font-semibold text-red-600"
+                      className="mt-1.5 text-[10px] font-semibold text-red-600"
                     >
                       {errors.firstName}
                     </p>
@@ -626,7 +617,7 @@ export function AppointmentForm() {
                   {errors.lastName ? (
                     <p
                       id="lastName-error"
-                      className="mt-1.5 text-[11px] font-semibold text-red-600"
+                      className="mt-1.5 text-[10px] font-semibold text-red-600"
                     >
                       {errors.lastName}
                     </p>
@@ -662,12 +653,12 @@ export function AppointmentForm() {
                   {errors.phone ? (
                     <p
                       id="phone-error"
-                      className="mt-1.5 text-[11px] font-semibold text-red-600"
+                      className="mt-1.5 text-[10px] font-semibold text-red-600"
                     >
                       {errors.phone}
                     </p>
                   ) : (
-                    <p id="phone-help" className="mt-1.5 text-[11px] text-muted">
+                    <p id="phone-help" className="mt-1.5 text-[10px] text-muted">
                       برای تأیید نوبت با همین شماره تماس می‌گیریم.
                     </p>
                   )}
@@ -690,60 +681,58 @@ export function AppointmentForm() {
                 </div>
               </div>
 
-              <div className="mt-5 rounded-2xl border border-navy-900/8 bg-cream/70 p-4">
-                <p className="text-[11px] font-bold text-navy-900">
-                  خلاصه نوبت
-                </p>
-                <div className="mt-3 grid gap-2 text-[11px] text-muted sm:grid-cols-2">
+              <div className="mt-5 rounded-xl border border-line bg-paper p-4">
+                <p className="text-[10px] font-semibold text-ink">خلاصه نوبت</p>
+                <div className="mt-3 grid gap-2 text-[10px] text-muted sm:grid-cols-2">
                   <span>
                     خدمت:{" "}
-                    <strong className="font-bold text-navy-800">
+                    <strong className="font-semibold text-ink">
                       {selectedService.title}
                     </strong>
                   </span>
                   <span>
                     پزشک:{" "}
-                    <strong className="font-bold text-navy-800">
+                    <strong className="font-semibold text-ink">
                       {selectedDoctor.name}
                     </strong>
                   </span>
                   <span>
                     تاریخ:{" "}
-                    <strong className="font-bold text-navy-800">
+                    <strong className="font-semibold text-ink">
                       {selectedDay ? formatDayLong(selectedDay) : "—"}
                     </strong>
                   </span>
                   <span>
                     ساعت:{" "}
-                    <strong className="font-bold text-navy-800">
+                    <strong className="font-semibold text-ink">
                       {time ? faDigits(time) : "—"}
                     </strong>
                   </span>
                 </div>
               </div>
 
-              <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-[11px] leading-6 text-muted">
+              <label className="mt-4 flex cursor-pointer items-start gap-2.5 text-[10px] leading-5 text-muted">
                 <input
                   type="checkbox"
                   checked={consent}
                   onChange={(event) => setConsent(event.target.checked)}
                   aria-invalid={Boolean(errors.consent)}
-                  className="mt-1 h-4 w-4 shrink-0 rounded border-navy-900/20 accent-gold-600"
+                  className="mt-0.5 h-4 w-4 shrink-0 rounded border-line-strong accent-forest-600"
                 />
                 <span>
-                  قوانین کلینیک را می‌پذیرم و تأیید می‌کنم که اطلاعات واردشده
-                  صحیح است. لغو نوبت تا ۲۴ ساعت قبل رایگان است.
+                  قوانین کلینیک را می‌پذیرم و تأیید می‌کنم اطلاعات واردشده صحیح
+                  است. لغو نوبت تا ۲۴ ساعت قبل رایگان است.
                 </span>
               </label>
               {errors.consent ? (
-                <p className="mt-1.5 text-[11px] font-semibold text-red-600">
+                <p className="mt-1.5 text-[10px] font-semibold text-red-600">
                   {errors.consent}
                 </p>
               ) : null}
             </div>
           ) : null}
 
-          <div className="mt-7 flex items-center justify-between gap-3 border-t border-navy-900/8 pt-5">
+          <div className="mt-7 flex items-center justify-between gap-3 border-t border-line pt-5">
             <button
               type="button"
               onClick={goBack}
@@ -754,16 +743,11 @@ export function AppointmentForm() {
               مرحله قبل
             </button>
 
-            <button
-              type="submit"
-              className={`btn btn-sm sm:px-6 sm:py-3 ${
-                step === 3 ? "btn-gold" : "btn-primary"
-              }`}
-            >
-              {step === 3 ? "تأیید و ثبت نوبت" : "مرحله بعد"}
+            <button type="submit" className="btn btn-dark btn-sm">
+              {step === 3 ? "ثبت نوبت" : "مرحله بعد"}
               <Icon
                 name={step === 3 ? "check" : "arrowLeft"}
-                className="h-4 w-4"
+                className="h-3.5 w-3.5"
               />
             </button>
           </div>
@@ -771,32 +755,30 @@ export function AppointmentForm() {
       </div>
 
       {ready && appointments.length > 0 ? (
-        <div className="card p-6 sm:p-8">
+        <div className="rounded-3xl border border-line bg-white p-6 sm:p-8">
           <div className="flex items-center justify-between gap-3">
-            <h2 className="text-sm font-extrabold text-navy-900">
-              نوبت‌های من
-            </h2>
+            <h2 className="text-sm font-bold text-ink">نوبت‌های من</h2>
             <span className="chip">{faDigits(appointments.length)} نوبت</span>
           </div>
 
-          <ul className="mt-4 space-y-3">
+          <ul className="mt-4">
             {appointments.map((appointment) => (
               <li
                 key={appointment.id}
-                className="rounded-2xl border border-navy-900/8 bg-cream/50 p-4"
+                className="border-b border-line py-4 last:border-0"
               >
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
-                    <p className="text-xs font-bold text-navy-900">
+                    <p className="text-xs font-semibold text-ink">
                       {appointment.serviceTitle}
                     </p>
-                    <p className="mt-1 text-[11px] text-muted">
+                    <p className="mt-1 text-[10px] text-muted">
                       {formatStoredDate(appointment.dateISO)} · ساعت{" "}
                       {faDigits(appointment.time)} · {appointment.doctorName}
                     </p>
                     <p
                       dir="ltr"
-                      className="mt-1 text-left text-[10px] tracking-wider text-muted"
+                      className="mt-1 text-left text-[9px] tracking-wider text-muted"
                     >
                       {appointment.id}
                     </p>
@@ -807,14 +789,14 @@ export function AppointmentForm() {
                       <button
                         type="button"
                         onClick={() => cancelAppointment(appointment.id)}
-                        className="rounded-full bg-red-50 px-3 py-1.5 text-[10px] font-bold text-red-600 transition hover:bg-red-100"
+                        className="rounded-full bg-red-50 px-3 py-1.5 text-[10px] font-semibold text-red-600 transition hover:bg-red-100"
                       >
                         تأیید لغو
                       </button>
                       <button
                         type="button"
                         onClick={() => setCancelId(null)}
-                        className="rounded-full bg-white px-3 py-1.5 text-[10px] font-bold text-navy-700 ring-1 ring-navy-900/10 transition hover:bg-navy-50"
+                        className="rounded-full border border-line px-3 py-1.5 text-[10px] font-semibold text-ink-soft transition hover:bg-paper"
                       >
                         انصراف
                       </button>
@@ -823,7 +805,7 @@ export function AppointmentForm() {
                     <button
                       type="button"
                       onClick={() => setCancelId(appointment.id)}
-                      className="rounded-full border border-navy-900/10 px-3 py-1.5 text-[10px] font-bold text-navy-700 transition hover:border-red-200 hover:bg-red-50 hover:text-red-600"
+                      className="rounded-full border border-line px-3 py-1.5 text-[10px] font-semibold text-ink-soft transition hover:border-red-200 hover:bg-red-50 hover:text-red-600"
                     >
                       لغو نوبت
                     </button>
@@ -834,26 +816,28 @@ export function AppointmentForm() {
           </ul>
 
           <p className="mt-4 text-[10px] leading-5 text-muted">
-            نوبت‌ها در همین مرورگر ذخیره شده‌اند. برای ثبت واقعی، با پذیرش کلینیک
-            هماهنگ کنید.
+            نوبت‌ها در همین مرورگر ذخیره شده‌اند. برای ثبت واقعی، با پذیرش
+            کلینیک هماهنگ کن.
           </p>
         </div>
       ) : null}
 
-      <div className="card p-6 sm:p-8">
-        <div className="flex items-center gap-2 text-navy-900">
-          <Icon name="info" className="h-4 w-4 text-gold-600" />
-          <h2 className="text-sm font-extrabold">نکات مهم پیش از مراجعه</h2>
+      <div className="rounded-3xl border border-line bg-white p-6 sm:p-8">
+        <div className="flex items-center gap-2">
+          <Icon name="info" className="h-4 w-4 text-forest-600" />
+          <h2 className="text-sm font-bold text-ink">
+            نکات مهم پیش از مراجعه
+          </h2>
         </div>
         <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
           {appointmentNotes.map((note) => (
             <li
               key={note}
-              className="flex items-start gap-2 text-[11px] leading-6 text-muted"
+              className="flex items-start gap-2 text-[10px] leading-5 text-muted"
             >
               <Icon
                 name="check"
-                className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-600"
+                className="mt-0.5 h-3 w-3 shrink-0 text-forest-600"
               />
               {note}
             </li>

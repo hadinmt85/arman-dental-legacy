@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { AppointmentForm } from "@/components/AppointmentForm";
 import { Icon } from "@/components/Icon";
 import { PageHero } from "@/components/PageHero";
-import { appointmentNotes, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "رزرو نوبت آنلاین",
@@ -13,19 +13,16 @@ export const metadata: Metadata = {
 
 const benefits = [
   {
-    icon: "clock" as const,
     title: "در کمتر از ۲ دقیقه",
-    text: "بدون تماس تلفنی و انتظار در صف، زمان مراجعه را خودتان انتخاب کنید.",
+    text: "بدون تماس تلفنی و انتظار در صف؛ زمان مراجعه را خودت انتخاب می‌کنی.",
   },
   {
-    icon: "calendar" as const,
-    title: "انتخاب زمان آزاد",
-    text: "ساعت‌های واقعی و به‌روز کلینیک را ببینید و هر زمان که مناسب‌تان است رزرو کنید.",
+    title: "ساعت‌های واقعی",
+    text: "زمان‌های آزاد کلینیک را می‌بینی و هر کدام که مناسب‌تر است انتخاب می‌کنی.",
   },
   {
-    icon: "shield" as const,
     title: "تأیید سریع",
-    text: "پس از ثبت، کارشناس پذیرش برای تأیید نهایی با شما تماس می‌گیرد.",
+    text: "پس از ثبت، کارشناس پذیرش برای تأیید نهایی با تو تماس می‌گیرد.",
   },
 ];
 
@@ -35,112 +32,63 @@ export default function AppointmentPage() {
       <PageHero
         crumb="رزرو نوبت"
         eyebrow="نوبت‌دهی آنلاین"
-        title="زمان مراجعه‌تان را خودتان انتخاب کنید"
-        description="خدمت مورد نظر، روز و ساعت آزاد را انتخاب کنید و اطلاعات تماس خود را وارد کنید. تأیید نهایی توسط پذیرش انجام می‌شود."
+        title="زمانت را انتخاب کن."
+        description="خدمت، روز و ساعت آزاد را انتخاب کن و اطلاعات تماس را وارد کن. تأیید نهایی توسط پذیرش انجام می‌شود."
       >
-        <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-[11px] text-navy-100">
-          <span className="flex items-center gap-2">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-            </span>
-            رزرو آنلاین ۲۴ ساعته فعال است
+        <div className="flex items-center gap-2 text-[11px] text-muted">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-forest-500 opacity-60" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-forest-600" />
           </span>
-          <span className="mt-1.5 block text-[10px] text-navy-300">
-            جمعه‌ها کلینیک تعطیل است.
-          </span>
+          رزرو آنلاین ۲۴ ساعته فعال است
         </div>
       </PageHero>
 
       <section className="section">
-        <div className="container-x grid gap-6 lg:grid-cols-[1.55fr_0.85fr] lg:items-start">
+        <div className="container-x grid gap-8 min-[900px]:grid-cols-[1.55fr_1fr] min-[900px]:items-start">
           <AppointmentForm />
 
-          <aside className="space-y-4 lg:sticky lg:top-28">
-            <div className="card p-6">
-              <h2 className="text-sm font-extrabold text-navy-900">
-                چرا رزرو آنلاین؟
-              </h2>
-              <ul className="mt-4 space-y-4">
+          <aside className="space-y-8 min-[900px]:sticky min-[900px]:top-28">
+            <div className="border-t border-ink/15 pt-5">
+              <h2 className="text-sm font-bold text-ink">چرا آنلاین؟</h2>
+              <ul className="mt-5 space-y-4">
                 {benefits.map((benefit) => (
-                  <li key={benefit.title} className="flex gap-3">
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gold-50 text-gold-600">
-                      <Icon name={benefit.icon} className="h-4 w-4" />
-                    </span>
-                    <div>
-                      <p className="text-xs font-bold text-navy-900">
-                        {benefit.title}
-                      </p>
-                      <p className="mt-1 text-[10px] leading-5 text-muted">
-                        {benefit.text}
-                      </p>
-                    </div>
+                  <li key={benefit.title}>
+                    <p className="text-xs font-semibold text-ink">
+                      {benefit.title}
+                    </p>
+                    <p className="mt-1 text-[10px] leading-5 text-muted">
+                      {benefit.text}
+                    </p>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="relative overflow-hidden rounded-3xl bg-navy-900 p-6 text-white">
-              <div className="absolute inset-0 bg-grid opacity-40" />
-              <div className="absolute -left-10 -top-10 h-32 w-32 rounded-full bg-gold-500/15 blur-2xl" />
-
-              <div className="relative">
-                <p className="text-[11px] text-navy-100">
-                  ترجیح می‌دهید تلفنی رزرو کنید؟
-                </p>
-                <a
-                  href={`tel:${site.phoneHref}`}
-                  dir="ltr"
-                  className="mt-2 block text-lg font-extrabold tracking-wide text-white transition hover:text-gold-300"
-                >
-                  {site.phone}
-                </a>
-                <div className="mt-4 space-y-2 border-t border-white/10 pt-4 text-[10px] leading-5 text-navy-200">
-                  <p className="flex items-start gap-2">
-                    <Icon
-                      name="clock"
-                      className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-400"
-                    />
-                    شنبه تا چهارشنبه ۹ تا ۲۰ — پنجشنبه ۹ تا ۱۴
-                  </p>
-                  <p className="flex items-start gap-2">
-                    <Icon
-                      name="pin"
-                      className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-400"
-                    />
-                    {site.addressShort}
-                  </p>
-                </div>
+            <div className="rounded-3xl bg-forest-900 p-6 text-white">
+              <p className="text-[10px] text-white/55">
+                ترجیح می‌دهی تلفنی رزرو کنی؟
+              </p>
+              <a
+                href={`tel:${site.phoneHref}`}
+                dir="ltr"
+                className="mt-2 block text-lg font-bold tracking-wide text-white transition hover:text-forest-200"
+              >
+                {site.phone}
+              </a>
+              <div className="mt-4 space-y-2 border-t border-white/10 pt-4 text-[10px] leading-5 text-white/60">
+                <p>شنبه تا چهارشنبه ۹ تا ۲۰ — پنجشنبه ۹ تا ۱۴</p>
+                <p>{site.addressShort}</p>
               </div>
             </div>
 
-            <div className="card p-6">
-              <h2 className="text-sm font-extrabold text-navy-900">
-                پیش از رزرو بخوانید
-              </h2>
-              <ul className="mt-4 space-y-2.5">
-                {appointmentNotes.map((note) => (
-                  <li
-                    key={note}
-                    className="flex items-start gap-2 text-[10px] leading-5 text-muted"
-                  >
-                    <Icon
-                      name="check"
-                      className="mt-0.5 h-3 w-3 shrink-0 text-gold-600"
-                    />
-                    {note}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="rounded-2xl border border-dashed border-navy-900/15 bg-cream/60 p-4 text-[10px] leading-5 text-muted">
-              <span className="flex items-center gap-1.5 font-bold text-navy-800">
-                <Icon name="info" className="h-3.5 w-3.5 text-gold-600" />
+            <div className="rounded-2xl border border-line bg-white p-5 text-[10px] leading-5 text-muted">
+              <span className="flex items-center gap-1.5 font-semibold text-ink">
+                <Icon name="info" className="h-3.5 w-3.5 text-forest-600" />
                 نسخه نمایشی
               </span>
-              این صفحه برای نمایش نمونه ساخته شده است؛ نوبت‌ها فقط در مرورگر شما
-              ذخیره می‌شوند. برای رزرو واقعی با کلینیک تماس بگیرید.
+              نوبت‌ها فقط در مرورگر تو ذخیره می‌شوند. برای رزرو واقعی با کلینیک
+              تماس بگیر.
             </div>
           </aside>
         </div>

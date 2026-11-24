@@ -3,7 +3,6 @@ import { ContactForm } from "@/components/ContactForm";
 import { CtaBand } from "@/components/CtaBand";
 import { Icon } from "@/components/Icon";
 import { PageHero } from "@/components/PageHero";
-import { SectionHeading } from "@/components/SectionHeading";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -15,30 +14,26 @@ export const metadata: Metadata = {
 
 const infoCards = [
   {
-    icon: "phone" as const,
-    label: "تلفن کلینیک",
+    label: "تلفن",
     value: site.phone,
     extra: site.mobile,
     href: `tel:${site.phoneHref}`,
     ltr: true,
   },
   {
-    icon: "pin" as const,
     label: "آدرس",
     value: site.addressShort,
-    extra: "مشاهده روی نقشه",
+    extra: "مسیریابی روی نقشه",
     href: site.mapUrl,
     ltr: false,
   },
   {
-    icon: "clock" as const,
     label: "ساعات کاری",
     value: "شنبه تا چهارشنبه ۹ تا ۲۰",
-    extra: "پنجشنبه ۹ تا ۱۴",
+    extra: "پنجشنبه ۹ تا ۱۴ — جمعه تعطیل",
     ltr: false,
   },
   {
-    icon: "mail" as const,
     label: "ایمیل",
     value: site.email,
     extra: "پاسخ در ۲۴ ساعت کاری",
@@ -48,14 +43,14 @@ const infoCards = [
 ];
 
 const access = [
-  "پارکینگ اختصاصی در طبقه منفی یک ساختمان",
-  "۵ دقیقه پیاده از ایستگاه مترو میدان دریا",
-  "دسترسی آسان با خطوط اتوبوس بلوار دریا",
+  "پارکینگ اختصاصی در طبقه منفی یک",
+  "۵ دقیقه پیاده از مترو میدان دریا",
+  "دسترسی با خطوط اتوبوس بلوار دریا",
 ];
 
 function MapArt() {
   return (
-    <div className="relative min-h-[420px] flex-1 overflow-hidden rounded-4xl bg-navy-900">
+    <div className="relative min-h-[420px] flex-1 overflow-hidden rounded-3xl border border-line bg-[#eef1ea]">
       <svg
         viewBox="0 0 800 460"
         className="absolute inset-0 h-full w-full"
@@ -64,32 +59,32 @@ function MapArt() {
       >
         <defs>
           <pattern
-            id="city-blocks"
-            width="64"
-            height="64"
+            id="light-blocks"
+            width="58"
+            height="58"
             patternUnits="userSpaceOnUse"
           >
-            <rect width="64" height="64" fill="#0c273c" />
+            <rect width="58" height="58" fill="#eef1ea" />
             <rect
               x="6"
               y="6"
-              width="50"
-              height="50"
+              width="46"
+              height="46"
               rx="5"
-              fill="#11344e"
+              fill="#e5e9e1"
             />
           </pattern>
         </defs>
 
-        <rect width="800" height="460" fill="url(#city-blocks)" />
-        <rect width="800" height="460" fill="#0a2237" opacity="0.35" />
+        <rect width="800" height="460" fill="url(#light-blocks)" />
+        <rect x="560" y="40" width="170" height="120" rx="16" fill="#dfe8de" />
+        <rect x="70" y="300" width="140" height="110" rx="16" fill="#dfe8de" />
 
         <g
-          stroke="#1c4966"
-          strokeWidth="12"
+          stroke="#fafaf7"
+          strokeWidth="16"
           fill="none"
           strokeLinecap="round"
-          opacity="0.9"
         >
           <path d="M-30 130 C 150 105 250 190 410 158 S 650 88 830 132" />
           <path d="M90 -30 C 130 120 70 260 128 490" />
@@ -97,7 +92,12 @@ function MapArt() {
           <path d="M-30 360 C 190 300 320 390 470 340 S 690 290 830 330" />
         </g>
 
-        <g stroke="#2b6183" strokeWidth="4" fill="none" opacity="0.7">
+        <g
+          stroke="#d3dad2"
+          strokeWidth="2"
+          fill="none"
+          strokeLinecap="round"
+        >
           <path d="M-30 130 C 150 105 250 190 410 158 S 650 88 830 132" />
           <path d="M90 -30 C 130 120 70 260 128 490" />
           <path d="M-30 360 C 190 300 320 390 470 340 S 690 290 830 330" />
@@ -105,31 +105,29 @@ function MapArt() {
 
         <path
           d="M-30 250 C 170 230 330 270 560 230 S 740 200 830 215"
-          stroke="#c39a3b"
-          strokeWidth="3"
-          strokeDasharray="10 9"
+          stroke="#2f6a56"
+          strokeWidth="2.5"
+          strokeDasharray="9 8"
           fill="none"
-          opacity="0.75"
+          opacity="0.65"
         />
 
-        <circle cx="420" cy="215" r="46" fill="#c39a3b" opacity="0.08" />
-        <circle cx="420" cy="215" r="28" fill="#c39a3b" opacity="0.12" />
+        <circle cx="420" cy="214" r="44" fill="#2f6a56" opacity="0.08" />
+        <circle cx="420" cy="214" r="24" fill="#2f6a56" opacity="0.12" />
         <g transform="translate(420 206)">
           <path
-            d="M0 -20c-9 0-16 7-16 16 0 12 16 27 16 27s16-15 16-27c0-9-7-16-16-16Z"
-            fill="#d5b25d"
+            d="M0 -18c-8 0-14 6-14 14 0 11 14 24 14 24s14-13 14-24c0-8-6-14-14-14Z"
+            fill="#2f6a56"
           />
-          <circle cy="-5" r="5.5" fill="#0a2237" />
+          <circle cy="-4" r="4.5" fill="#f7f6f2" />
         </g>
       </svg>
 
-      <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-white/10 bg-navy-950/85 p-5 backdrop-blur sm:inset-x-6 sm:bottom-6">
+      <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-line bg-white/95 p-5 backdrop-blur sm:inset-x-6 sm:bottom-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p className="text-[10px] text-navy-300">
-              کلینیک دندانپزشکی آرمان
-            </p>
-            <p className="mt-1.5 max-w-sm text-xs leading-6 text-white">
+            <p className="text-[10px] text-muted">کلینیک دندانپزشکی آرمان</p>
+            <p className="mt-1.5 max-w-sm text-xs leading-6 text-ink">
               {site.address}
             </p>
           </div>
@@ -137,7 +135,7 @@ function MapArt() {
             href={site.mapUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-gold btn-sm"
+            className="btn btn-dark btn-sm"
           >
             <Icon name="map" className="h-3.5 w-3.5" />
             مسیریابی
@@ -145,9 +143,9 @@ function MapArt() {
         </div>
       </div>
 
-      <span className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-semibold text-white backdrop-blur sm:right-6 sm:top-6">
-        <span className="h-1.5 w-1.5 rounded-full bg-gold-400" />
-        محدوده سعادت‌آباد
+      <span className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full border border-line bg-white/90 px-3 py-1.5 text-[10px] font-medium text-ink backdrop-blur sm:right-6 sm:top-6">
+        <span className="h-1.5 w-1.5 rounded-full bg-forest-600" />
+        سعادت‌آباد
       </span>
     </div>
   );
@@ -159,41 +157,37 @@ export default function ContactPage() {
       <PageHero
         crumb="تماس با ما"
         eyebrow="ارتباط با کلینیک"
-        title="ما همین‌جا هستیم تا کمکتان کنیم"
-        description="برای رزرو نوبت، مشاوره درمانی یا هر سؤالی درباره خدمات، از راه‌های زیر با ما در ارتباط باشید."
+        title="راه ارتباطی با ما."
+        description="برای رزرو نوبت، مشاوره درمانی یا هر سؤالی درباره خدمات، از راه‌های زیر با ما در ارتباط باش."
       >
-        <div className="flex flex-wrap gap-3">
-          <a href={`tel:${site.phoneHref}`} className="btn btn-gold">
-            <Icon name="phone" className="h-4 w-4" />
+        <div className="flex flex-wrap gap-4">
+          <a href={`tel:${site.phoneHref}`} className="btn btn-dark btn-sm">
+            <Icon name="phone" className="h-3.5 w-3.5" />
             تماس فوری
           </a>
           <a
             href={site.mapUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-on-dark"
+            className="link-underline text-xs"
           >
-            <Icon name="map" className="h-4 w-4" />
             مسیریابی
+            <Icon name="arrowUpLeft" className="h-3.5 w-3.5" />
           </a>
         </div>
       </PageHero>
 
       <section className="section">
         <div className="container-x">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 border-t border-ink/15 pt-6 sm:grid-cols-2 lg:grid-cols-4">
             {infoCards.map((card) => (
-              <div
-                key={card.label}
-                className="rounded-3xl border border-navy-900/8 bg-white p-5 shadow-card"
-              >
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-navy-50 text-navy-800">
-                  <Icon name={card.icon} className="h-5 w-5" />
-                </span>
-                <p className="mt-4 text-[11px] text-muted">{card.label}</p>
+              <div key={card.label}>
+                <p className="text-[10px] tracking-wide text-muted">
+                  {card.label}
+                </p>
                 <p
                   dir={card.ltr ? "ltr" : undefined}
-                  className={`mt-1 text-sm font-bold text-navy-900 ${
+                  className={`mt-2 text-sm font-semibold text-ink ${
                     card.ltr ? "text-right" : ""
                   }`}
                 >
@@ -208,10 +202,10 @@ export default function ContactPage() {
                         ? "noopener noreferrer"
                         : undefined
                     }
-                    className="mt-2 inline-flex items-center gap-1 text-[10px] font-semibold text-gold-600 transition hover:text-gold-700"
+                    className="mt-2 inline-flex items-center gap-1 text-[10px] text-muted transition hover:text-forest-700"
                   >
                     {card.extra}
-                    <Icon name="chevronLeft" className="h-3 w-3" />
+                    <Icon name="arrowUpLeft" className="h-3 w-3" />
                   </a>
                 ) : (
                   <p className="mt-2 text-[10px] text-muted">{card.extra}</p>
@@ -220,45 +214,42 @@ export default function ContactPage() {
             ))}
           </div>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:items-stretch">
-            <div className="flex flex-col gap-4">
+          <div className="mt-14 grid gap-6 lg:grid-cols-2 lg:items-stretch">
+            <div className="flex flex-col gap-6">
               <MapArt />
 
-              <div className="rounded-3xl border border-navy-900/8 bg-white p-5 shadow-card">
-                <h2 className="flex items-center gap-2 text-sm font-extrabold text-navy-900">
-                  <Icon name="map" className="h-4 w-4 text-gold-600" />
-                  راه‌های دسترسی
-                </h2>
-                <ul className="mt-3 space-y-2">
+              <div className="rounded-3xl border border-line bg-white p-6">
+                <h2 className="text-sm font-bold text-ink">راه‌های دسترسی</h2>
+                <ul className="mt-4 border-t border-line">
                   {access.map((item) => (
                     <li
                       key={item}
-                      className="flex items-start gap-2 text-[11px] leading-6 text-muted"
+                      className="flex items-start gap-2 border-b border-line py-3 text-[11px] leading-6 text-muted last:border-0"
                     >
                       <Icon
                         name="check"
-                        className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-600"
+                        className="mt-1 h-3 w-3 shrink-0 text-forest-600"
                       />
                       {item}
                     </li>
                   ))}
                 </ul>
-                <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-navy-900/8 pt-4">
-                  <span className="text-[10px] text-muted">شبکه‌های اجتماعی:</span>
+
+                <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
                   {[
-                    { href: site.instagram, label: "اینستاگرام", icon: "instagram" as const },
-                    { href: site.telegram, label: "تلگرام", icon: "telegram" as const },
-                    { href: site.whatsapp, label: "واتساپ", icon: "whatsapp" as const },
+                    { href: site.instagram, label: "اینستاگرام" },
+                    { href: site.telegram, label: "تلگرام" },
+                    { href: site.whatsapp, label: "واتساپ" },
                   ].map((social) => (
                     <a
                       key={social.label}
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={social.label}
-                      className="grid h-8 w-8 place-items-center rounded-full border border-navy-900/10 text-navy-700 transition hover:border-gold-400 hover:bg-gold-50 hover:text-gold-600"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-muted transition hover:text-ink"
                     >
-                      <Icon name={social.icon} className="h-3.5 w-3.5" />
+                      {social.label}
+                      <Icon name="arrowUpLeft" className="h-3 w-3" />
                     </a>
                   ))}
                 </div>
@@ -270,60 +261,10 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-white pb-20 sm:pb-24">
-        <div className="container-x pt-16">
-          <div className="grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-center">
-            <SectionHeading
-              align="start"
-              eyebrow="پاسخگویی"
-              title="قبل از تماس، شاید پاسخ اینجا باشد"
-              description="بیشتر سؤالات بیماران درباره نوبت‌دهی، تعرفه‌ها و بیمه است. اگر پاسخ خود را پیدا نکردید، فرم تماس یا تلفن در دسترس است."
-            />
-            <div className="grid gap-3 sm:grid-cols-2">
-              {[
-                {
-                  icon: "clock" as const,
-                  title: "زمان پاسخگویی تلفنی",
-                  text: "در ساعات کاری کلینیک؛ خارج از این بازه پیام بگذارید.",
-                },
-                {
-                  icon: "shield" as const,
-                  title: "بیمه تکمیلی",
-                  text: "پیش از مراجعه نام بیمه خود را به پذیرش اطلاع دهید.",
-                },
-                {
-                  icon: "calendar" as const,
-                  title: "تغییر نوبت",
-                  text: "تا ۲۴ ساعت قبل، لغو یا جابه‌جایی رایگان است.",
-                },
-                {
-                  icon: "heart" as const,
-                  title: "شرایط اورژانس",
-                  text: "درد شدید یا شکستگی دندان؟ تلفنی هماهنگ کنید.",
-                },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-2xl border border-navy-900/8 bg-cream/60 p-4"
-                >
-                  <Icon name={item.icon} className="h-4 w-4 text-gold-600" />
-                  <p className="mt-2 text-xs font-bold text-navy-900">
-                    {item.title}
-                  </p>
-                  <p className="mt-1 text-[10px] leading-5 text-muted">
-                    {item.text}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="pb-20 sm:pb-24">
+      <div className="pb-20 sm:pb-28">
         <CtaBand
-          title="آماده‌اید اولین قدم را بردارید؟"
-          text="نوبت خود را آنلاین رزرو کنید یا برای مشاوره سریع با پذیرش کلینیک تماس بگیرید."
+          title="آماده‌ای اولین قدم را برداری؟"
+          text="نوبتت را آنلاین رزرو کن یا برای مشاوره سریع با پذیرش کلینیک تماس بگیر."
         />
       </div>
     </>

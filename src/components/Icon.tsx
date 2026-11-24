@@ -31,6 +31,7 @@ export type IconName =
   | "whatsapp"
   | "telegram"
   | "chevronDown"
+  | "plus"
   | "chevronLeft"
   | "chevronRight"
   | "info"
@@ -202,6 +203,7 @@ const icons: Record<IconName, ReactNode> = {
     />
   ),
   chevronDown: <path d="m6 9.5 6 6 6-6" />,
+  plus: <path d="M12 5v14M5 12h14" />,
   chevronLeft: <path d="m14.5 6-6 6 6 6" />,
   chevronRight: <path d="m9.5 6 6 6-6 6" />,
   info: (
