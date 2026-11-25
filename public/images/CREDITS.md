@@ -6,7 +6,7 @@ launch.
 
 | File | Source | License |
 | --- | --- | --- |
-| `hero-smile.jpg` | [Pexels photo 7298650](https://www.pexels.com/photo/7298650/) | Pexels License |
+| `hero-pink.jpg` | [Pexels photo 3762453](https://www.pexels.com/photo/3762453/) | Pexels License |
 | `hero.jpg` | [Pexels photo 1858175](https://www.pexels.com/photo/1858175/) | Pexels License |
 | `smile.jpg` | [Pexels photo 3762453](https://www.pexels.com/photo/3762453/) | Pexels License |
 | `care.jpg` | [Pexels photo 3845983](https://www.pexels.com/photo/3845983/) | Pexels License |
@@ -17,4 +17,5 @@ launch.
 
 - Pexels License: https://www.pexels.com/license/
 - Unsplash License: https://unsplash.com/license
+
 

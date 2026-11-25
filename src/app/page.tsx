@@ -136,15 +136,15 @@ export default function HomePage() {
             <div className="rounded-[2rem] border border-white/80 bg-white p-2 shadow-soft">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.6rem] bg-sky">
                 <Image
-                  src="/images/hero-smile.jpg"
-                  alt="کلوزآپ لبخند طبیعی با دندان‌های سفید، بدون چهره"
+                  src="/images/hero-pink.jpg"
+                  alt="کلوزآپ لبخند با لب صورتی و دندان‌های سفید، بدون چهره"
                   fill
                   priority
                   sizes="(min-width: 1024px) 430px, 90vw"
                   className="object-cover"
                   style={{
-                    transform: "scale(2.15)",
-                    transformOrigin: "50% 38%",
+                    transform: "scale(1.12)",
+                    transformOrigin: "50% 52%",
                   }}
                 />
               </div>
