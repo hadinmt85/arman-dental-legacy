@@ -136,7 +136,7 @@ export default function HomePage() {
             <div className="rounded-[2rem] border border-white/80 bg-white p-2 shadow-soft">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.6rem] bg-sky">
                 <Image
-                  src="/images/hero-mint-centered.jpg"
+                  src="/images/hero-mint-clean.jpg"
                   alt="کلوزآپ لب و دندان با لب صورتی ملایم، بدون چهره"
                   fill
                   priority
