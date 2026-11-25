@@ -64,6 +64,41 @@
         line-height: 2.1;
       }
 
+      .photo-banner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin-top: 26px;
+        padding: 15px 18px;
+        border: 1px solid rgba(216, 255, 62, 0.35);
+        border-radius: 14px;
+        background: #1a1d1a;
+        color: #f2efe6;
+        font-size: 11px;
+        transition: 0.2s ease;
+      }
+
+      .photo-banner:hover {
+        border-color: #d8ff3e;
+      }
+
+      .photo-banner b {
+        color: #d8ff3e;
+      }
+
+      .photo-banner span:last-child {
+        color: #b8bfb6;
+      }
+
+      @media (max-width: 640px) {
+        .photo-banner {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 6px;
+        }
+      }
+
       .grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -308,6 +343,11 @@
         هر مکاپ یک زبان بصری مستقل دارد: از سرمایشی و انسانی تا بروتالیست،
         تیره‌ی لوکس و کلینیکال نرم. روی هر کارت بزن تا نسخه کامل را ببینی.
       </p>
+
+      <a class="photo-banner" href="hero-photos.html">
+        <b>عکس هیرو را انتخاب کن</b>
+        <span>۴ نمونه واقعی از دندان انسان، بدون چهره کامل — مشاهده و انتخاب ←</span>
+      </a>
 
       <div class="grid">
         <a class="card card-a" href="a.html">

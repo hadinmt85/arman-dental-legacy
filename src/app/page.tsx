@@ -134,15 +134,20 @@ export default function HomePage() {
 
           <div className="animate-fade fade-2 relative mx-auto w-full max-w-[440px] md:col-span-6 md:max-w-[450px]">
             <div className="rounded-[2rem] border border-white/80 bg-white p-2 shadow-soft">
-              <Image
-                src="/images/hero-teeth.jpg"
-                alt="مدل دندان‌های طبیعی در کلینیک دندانپزشکی آرمان"
-                width={900}
-                height={1200}
-                priority
-                sizes="(min-width: 1024px) 430px, 90vw"
-                className="aspect-[4/5] w-full rounded-[1.6rem] object-cover object-[50%_45%]"
-              />
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.6rem] bg-sky">
+                <Image
+                  src="/images/hero-smile.jpg"
+                  alt="کلوزآپ لبخند طبیعی با دندان‌های سفید، بدون چهره"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 430px, 90vw"
+                  className="object-cover"
+                  style={{
+                    transform: "scale(2.15)",
+                    transformOrigin: "50% 38%",
+                  }}
+                />
+              </div>
             </div>
 
             <div className="absolute right-3 top-4 flex items-center gap-2 rounded-xl border border-line bg-white/95 px-3 py-2 shadow-float backdrop-blur sm:right-4 sm:top-5">
