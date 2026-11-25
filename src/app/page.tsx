@@ -135,13 +135,13 @@ export default function HomePage() {
           <div className="animate-fade fade-2 relative mx-auto w-full max-w-[440px] md:col-span-6 md:max-w-[450px]">
             <div className="rounded-[2rem] border border-white/80 bg-white p-2 shadow-soft">
               <Image
-                src="/images/hero.jpg"
-                alt="بیمار با لبخند طبیعی در کلینیک دندانپزشکی آرمان"
+                src="/images/hero-teeth.jpg"
+                alt="مدل دندان‌های طبیعی در کلینیک دندانپزشکی آرمان"
                 width={900}
                 height={1200}
                 priority
                 sizes="(min-width: 1024px) 430px, 90vw"
-                className="aspect-[4/5] w-full rounded-[1.6rem] object-cover object-[50%_30%]"
+                className="aspect-[4/5] w-full rounded-[1.6rem] object-cover object-[50%_45%]"
               />
             </div>
 

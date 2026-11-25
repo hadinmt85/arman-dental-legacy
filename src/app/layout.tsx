@@ -39,13 +39,13 @@ export const metadata: Metadata = {
     title: "کلینیک دندانپزشکی آرمان | ایمپلنت، لمینت و زیبایی دندان",
     description: site.description,
     url: "/",
-    images: ["/images/hero.jpg"],
+    images: ["/images/hero-teeth.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "کلینیک دندانپزشکی آرمان",
     description: site.description,
-    images: ["/images/hero.jpg"],
+    images: ["/images/hero-teeth.jpg"],
   },
   robots: {
     index: true,
