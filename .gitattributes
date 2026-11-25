@@ -1,0 +1,4 @@
+# Static design mockups are reference files, not application source.
+# Keep GitHub's language detection focused on the TypeScript app.
+public/mockups/** linguist-documentation=true
+*.html linguist-documentation=true
