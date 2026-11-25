@@ -5,7 +5,7 @@ import { CtaBand } from "@/components/CtaBand";
 import { Icon } from "@/components/Icon";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { ServiceRow } from "@/components/ServiceRow";
+import { ServiceCard } from "@/components/ServiceCard";
 import { processSteps, services, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -16,9 +16,21 @@ export const metadata: Metadata = {
 };
 
 const assurances = [
-  "تعرفه شفاف پیش از شروع درمان",
-  "کنترل درد و بی‌حسی کامل",
-  "گارانتی کتبی و پیگیری دوره‌ای",
+  {
+    icon: "shield" as const,
+    title: "استریلیزاسیون استاندارد",
+    text: "کنترل عفونت مطابق پروتکل‌های وزارت بهداشت.",
+  },
+  {
+    icon: "sparkle" as const,
+    title: "تعرفه شفاف",
+    text: "هزینه‌ها پیش از شروع درمان، مکتوب اعلام می‌شود.",
+  },
+  {
+    icon: "heart" as const,
+    title: "پیگیری بعد از درمان",
+    text: "تماس پیگیری و ویزیت کنترل دوره‌ای.",
+  },
 ];
 
 export default function ServicesPage() {
@@ -26,67 +38,61 @@ export default function ServicesPage() {
     <>
       <PageHero
         crumb="خدمات"
-        eyebrow="خدمات"
+        eyebrow="خدمات کلینیک"
         title="هر درمان، یک مسیر روشن."
         description="از پیشگیری و درمان ریشه تا ایمپلنت و طراحی لبخند؛ هر درمان با معاینه دقیق، پلن شفاف و پیگیری منظم انجام می‌شود."
       >
-        <Link href="/appointment" className="btn btn-dark">
-          رزرو نوبت
-          <Icon name="arrowLeft" className="h-4 w-4" />
-        </Link>
+        <div className="flex flex-wrap gap-2.5">
+          <Link href="/appointment" className="btn btn-primary btn-sm">
+            رزرو نوبت
+            <Icon name="arrowLeft" className="h-3.5 w-3.5" />
+          </Link>
+          <a href={`tel:${site.phoneHref}`} className="btn btn-outline btn-sm">
+            مشاوره تلفنی
+          </a>
+        </div>
       </PageHero>
 
-      <section className="border-b border-line bg-white/45">
-        <div className="container-x flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:justify-between">
+      <section className="container-x pt-8">
+        <div className="grid gap-3 md:grid-cols-3">
           {assurances.map((item) => (
-            <span
-              key={item}
-              className="flex items-center gap-2 text-[11px] font-medium text-ink-soft"
+            <div
+              key={item.title}
+              className="flex items-start gap-3 rounded-2xl border border-line bg-white p-4 shadow-card"
             >
-              <Icon name="check" className="h-3.5 w-3.5 text-forest-600" />
-              {item}
-            </span>
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600">
+                <Icon name={item.icon} className="h-5 w-5" />
+              </span>
+              <span>
+                <b className="block text-[11px] font-bold text-ink">
+                  {item.title}
+                </b>
+                <span className="mt-1 block text-[9.5px] leading-5 text-muted">
+                  {item.text}
+                </span>
+              </span>
+            </div>
           ))}
         </div>
       </section>
 
       <section className="section">
-        <div className="container-x grid gap-12 min-[900px]:grid-cols-12">
-          <aside className="min-[900px]:col-span-4">
-            <span className="eyebrow">فهرست خدمات</span>
-            <h2 className="mt-4 text-[clamp(1.8rem,3.4vw,2.7rem)] font-extrabold leading-[1.24] tracking-[-0.03em] text-ink">
-              درمان مناسب تو،
-              <br />
-              با جزئیات کامل.
-            </h2>
-            <p className="mt-4 max-w-sm text-sm leading-8 text-muted">
-              روی هر خدمت بزن تا توضیحات، ویژگی‌ها و تعرفه تقریبی را ببینی. برای
-              انتخاب دقیق، یک مشاوره کوتاه کافی است.
+        <div className="container-x">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+            <SectionHeading
+              eyebrow="فهرست خدمات"
+              title="درمان مناسب تو، با جزئیات کامل."
+              description="روی هر خدمت بزن تا توضیحات، ویژگی‌ها و تعرفه تقریبی را ببینی. برای انتخاب دقیق، یک مشاوره کوتاه کافی است."
+            />
+            <p className="max-w-[260px] rounded-xl border border-line bg-sky-soft px-4 py-3 text-[9px] leading-5 text-muted">
+              تعرفه‌ها تقریبی هستند و پس از معاینه و بررسی تصاویر، هزینه نهایی
+              به‌صورت مکتوب اعلام می‌شود.
             </p>
+          </div>
 
-            <div className="mt-8 rounded-2xl border border-line bg-sand-soft p-5">
-              <p className="text-xs font-semibold text-ink">درباره تعرفه‌ها</p>
-              <p className="mt-2 text-[11px] leading-6 text-muted">
-                هزینه‌ها بر اساس شرایط دهان، تعداد جلسات و مواد مصرفی متفاوت
-                است. تعرفه نهایی پس از معاینه به‌صورت مکتوب اعلام می‌شود.
-              </p>
-            </div>
-
-            <div className="mt-6 border-t border-line pt-6">
-              <p className="text-[11px] text-muted">سؤالی داری؟</p>
-              <a
-                href={`tel:${site.phoneHref}`}
-                dir="ltr"
-                className="mt-2 block text-lg font-bold text-ink transition hover:text-forest-700"
-              >
-                {site.phone}
-              </a>
-            </div>
-          </aside>
-
-          <div className="min-[900px]:col-span-8">
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
-              <ServiceRow
+              <ServiceCard
                 key={service.id}
                 service={service}
                 index={index + 1}
@@ -105,46 +111,65 @@ export default function ServicesPage() {
             description="یک فرآیند ثابت برای همه درمان‌ها؛ تا بدانی در هر مرحله چه اتفاقی می‌افتد."
           />
 
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {processSteps.map((step) => (
-              <div key={step.step} className="border-t border-ink/15 pt-5">
-                <span className="text-[11px] tabular-nums text-muted">
+              <div
+                key={step.step}
+                className="rounded-2xl border border-line bg-sky-soft/60 p-5"
+              >
+                <span className="grid h-9 w-9 place-items-center rounded-xl bg-white text-[11px] font-bold text-brand-600 shadow-sm">
                   {step.step}
                 </span>
-                <h3 className="mt-4 text-lg font-bold text-ink">
+                <h3 className="mt-4 text-[13px] font-bold text-ink">
                   {step.title}
                 </h3>
-                <p className="mt-2 text-xs leading-6 text-muted">
+                <p className="mt-1.5 text-[10px] leading-5 text-muted">
                   {step.text}
                 </p>
               </div>
             ))}
           </div>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-[10px] text-muted">
+            <span className="inline-flex items-center gap-1.5">
+              <Icon name="checkCircle" className="h-3.5 w-3.5 text-mint-600" />
+              بی‌حسی و کنترل درد در همه درمان‌ها
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Icon name="checkCircle" className="h-3.5 w-3.5 text-mint-600" />
+              امکان پرداخت مرحله‌ای
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Icon name="checkCircle" className="h-3.5 w-3.5 text-mint-600" />
+              پرونده دیجیتال و آرشیو تصاویر
+            </span>
+          </div>
         </div>
       </section>
 
-      <section className="container-x py-16 sm:py-20">
-        <div className="relative aspect-[16/9] overflow-hidden rounded-[2rem] bg-sand sm:aspect-[16/7]">
+      <section className="container-x py-12 sm:py-16">
+        <div className="relative aspect-[16/9] overflow-hidden rounded-[1.75rem] bg-sky sm:aspect-[16/7]">
           <Image
             src="/images/care.jpg"
             alt="گفت‌وگوی پزشک و بیمار در کلینیک دندانپزشکی آرمان"
             fill
-            sizes="(min-width: 1280px) 1216px, 100vw"
-            className="object-cover object-[50%_35%]"
+            sizes="(min-width: 1280px) 1160px, 100vw"
+            className="object-cover object-[50%_30%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/65 via-ink/10 to-transparent" />
-          <div className="absolute bottom-6 right-6 text-white sm:bottom-8 sm:right-8">
-            <p className="text-[10px] tracking-wide text-white/65">
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-900/70 via-brand-900/10 to-transparent" />
+          <div className="absolute bottom-5 right-5 text-white sm:bottom-7 sm:right-7">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1 text-[9px] backdrop-blur">
+              <span className="h-1.5 w-1.5 rounded-full bg-mint-300" />
               داخل کلینیک آرمان
-            </p>
-            <p className="mt-1.5 text-lg font-bold sm:text-xl">
+            </span>
+            <p className="mt-2 text-lg font-bold sm:text-xl">
               هر جزئیات، با دقت.
             </p>
           </div>
         </div>
       </section>
 
-      <div className="pb-20 sm:pb-28">
+      <div className="pb-16 sm:pb-20">
         <CtaBand
           title="مطمئن نیستی از کجا شروع کنی؟"
           text="یک مشاوره کوتاه رزرو کن؛ وضعیت دهان بررسی می‌شود و گزینه‌های درمانی با هزینه و زمان‌بندی شفاف ارائه می‌شود."

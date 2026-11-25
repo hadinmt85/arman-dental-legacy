@@ -25,7 +25,7 @@ export function BeforeAfter({
 
   return (
     <div
-      className={`group relative select-none overflow-hidden bg-sand focus-within:ring-2 focus-within:ring-forest-600 focus-within:ring-offset-2 focus-within:ring-offset-paper ${className}`}
+      className={`group relative select-none overflow-hidden bg-sky focus-within:ring-2 focus-within:ring-brand-600 focus-within:ring-offset-2 focus-within:ring-offset-paper ${className}`}
       dir="ltr"
     >
       <Image
@@ -62,7 +62,7 @@ export function BeforeAfter({
         قبل
       </span>
       <span
-        className="pointer-events-none absolute right-4 top-4 z-10 rounded-full bg-ink/85 px-3 py-1.5 text-[10px] font-semibold text-white shadow-sm backdrop-blur"
+        className="pointer-events-none absolute right-4 top-4 z-10 rounded-full bg-brand-600 px-3 py-1.5 text-[10px] font-semibold text-white shadow-sm backdrop-blur"
         dir="rtl"
       >
         بعد

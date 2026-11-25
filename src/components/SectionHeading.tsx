@@ -29,7 +29,7 @@ export function SectionHeading({
         </span>
       ) : null}
       <h2
-        className={`mt-4 text-[clamp(1.8rem,3.6vw,2.9rem)] font-extrabold leading-[1.25] tracking-[-0.03em] ${
+        className={`mt-3 text-[clamp(1.75rem,3.4vw,2.55rem)] font-extrabold leading-[1.25] tracking-[-0.045em] ${
           light ? "text-white" : "text-ink"
         }`}
       >
@@ -37,8 +37,8 @@ export function SectionHeading({
       </h2>
       {description ? (
         <p
-          className={`mt-4 max-w-lg text-sm leading-8 ${
-            light ? "text-white/65" : "text-muted"
+          className={`mt-3 max-w-lg text-xs leading-7 sm:text-[13px] ${
+            light ? "text-white/70" : "text-muted"
           }`}
         >
           {description}

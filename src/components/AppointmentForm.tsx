@@ -183,8 +183,8 @@ export function AppointmentForm() {
 
   if (booking) {
     return (
-      <div className="rounded-3xl border border-line bg-white p-6 sm:p-10">
-        <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-forest-100 text-forest-700">
+      <div className="rounded-2xl border border-line bg-white shadow-card p-6 sm:p-10">
+        <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-mint-100 text-mint-700">
           <Icon name="checkCircle" className="h-7 w-7" />
         </div>
         <h2 className="mt-6 text-center text-2xl font-extrabold tracking-tight text-ink">
@@ -195,7 +195,7 @@ export function AppointmentForm() {
           می‌گیرند.
         </p>
 
-        <div className="mx-auto mt-7 max-w-md rounded-2xl border border-line bg-paper p-5 text-center">
+        <div className="mx-auto mt-7 max-w-md rounded-2xl border border-line bg-sky-soft p-5 text-center">
           <p className="text-[10px] text-muted">کد پیگیری نوبت</p>
           <p
             dir="ltr"
@@ -227,7 +227,7 @@ export function AppointmentForm() {
         </dl>
 
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <button type="button" onClick={resetForm} className="btn btn-dark btn-sm">
+          <button type="button" onClick={resetForm} className="btn btn-primary btn-sm">
             رزرو نوبت دیگر
           </button>
           <Link href="/" className="btn btn-outline btn-sm">
@@ -245,7 +245,7 @@ export function AppointmentForm() {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-3xl border border-line bg-white p-6 sm:p-8">
+      <div className="rounded-2xl border border-line bg-white shadow-card p-6 sm:p-8">
         <ol className="flex items-center gap-3">
           {stepTitles.map((title, index) => {
             const number = index + 1;
@@ -257,9 +257,9 @@ export function AppointmentForm() {
                 <span
                   className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border text-[10px] font-bold transition ${
                     isDone
-                      ? "border-forest-600 bg-forest-600 text-white"
+                      ? "border-brand-600 bg-brand-600 text-white"
                       : isCurrent
-                        ? "border-ink bg-ink text-white"
+                        ? "border-brand-600 bg-brand-600 text-white"
                         : "border-line bg-white text-muted"
                   }`}
                 >
@@ -279,7 +279,7 @@ export function AppointmentForm() {
                 {index < stepTitles.length - 1 ? (
                   <span
                     className={`hidden h-px flex-1 sm:block ${
-                      isDone ? "bg-forest-300" : "bg-line"
+                      isDone ? "bg-brand-300" : "bg-line"
                     }`}
                   />
                 ) : null}
@@ -314,9 +314,9 @@ export function AppointmentForm() {
                   return (
                     <label
                       key={service.id}
-                      className={`relative flex cursor-pointer items-center gap-3 rounded-2xl border p-4 transition has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-forest-600/40 ${
+                      className={`relative flex cursor-pointer items-center gap-3 rounded-2xl border p-4 transition has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-brand-600/40 ${
                         selected
-                          ? "border-ink bg-forest-50"
+                          ? "border-brand-600 bg-brand-50"
                           : "border-line bg-white hover:border-line-strong"
                       }`}
                     >
@@ -331,8 +331,8 @@ export function AppointmentForm() {
                       <span
                         className={`grid h-9 w-9 shrink-0 place-items-center rounded-full ${
                           selected
-                            ? "bg-forest-600 text-white"
-                            : "bg-paper text-forest-700"
+                            ? "bg-brand-600 text-white"
+                            : "bg-sky-soft text-brand-700"
                         }`}
                       >
                         <Icon name={service.icon} className="h-4 w-4" />
@@ -348,7 +348,7 @@ export function AppointmentForm() {
                       <span
                         className={`grid h-5 w-5 shrink-0 place-items-center rounded-full border ${
                           selected
-                            ? "border-ink bg-ink text-white"
+                            ? "border-brand-600 bg-brand-600 text-white"
                             : "border-line text-transparent"
                         }`}
                       >
@@ -374,9 +374,9 @@ export function AppointmentForm() {
                   return (
                     <label
                       key={doctor.id}
-                      className={`flex cursor-pointer items-start gap-3 rounded-2xl border p-4 transition has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-forest-600/40 ${
+                      className={`flex cursor-pointer items-start gap-3 rounded-2xl border p-4 transition has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-brand-600/40 ${
                         selected
-                          ? "border-ink bg-forest-50"
+                          ? "border-brand-600 bg-brand-50"
                           : "border-line bg-white hover:border-line-strong"
                       }`}
                     >
@@ -388,7 +388,7 @@ export function AppointmentForm() {
                         onChange={() => setDoctorId(doctor.id)}
                         className="sr-only"
                       />
-                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-forest-100 text-[11px] font-bold text-forest-800">
+                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-100 text-[11px] font-bold text-brand-800">
                         {doctor.name.replace("دکتر ", "").charAt(0)}
                       </span>
                       <span>
@@ -420,7 +420,7 @@ export function AppointmentForm() {
                   ? Array.from({ length: 7 }).map((_, index) => (
                       <div
                         key={index}
-                        className="h-[82px] min-w-[74px] animate-pulse rounded-xl bg-paper"
+                        className="h-[82px] min-w-[74px] animate-pulse rounded-xl bg-sky-soft"
                       />
                     ))
                   : days.map((day) => {
@@ -438,8 +438,8 @@ export function AppointmentForm() {
                           aria-pressed={selected}
                           className={`min-w-[74px] rounded-xl border px-3 py-3 text-center transition ${
                             selected
-                              ? "border-ink bg-ink text-white"
-                              : "border-line bg-white text-ink hover:border-ink/30"
+                              ? "border-brand-600 bg-brand-600 text-white"
+                              : "border-line bg-white text-ink hover:border-brand-300"
                           }`}
                         >
                           <span
@@ -485,7 +485,7 @@ export function AppointmentForm() {
                     {Array.from({ length: 7 }).map((_, index) => (
                       <div
                         key={index}
-                        className="h-11 animate-pulse rounded-lg bg-paper"
+                        className="h-11 animate-pulse rounded-lg bg-sky-soft"
                       />
                     ))}
                   </div>
@@ -514,10 +514,10 @@ export function AppointmentForm() {
                           aria-pressed={selected}
                           className={`rounded-lg border px-2 py-2.5 text-xs font-semibold transition ${
                             selected
-                              ? "border-ink bg-ink text-white"
+                              ? "border-brand-600 bg-brand-600 text-white"
                               : disabled
-                                ? "cursor-not-allowed border-line bg-paper text-muted/40 line-through"
-                                : "border-line bg-white text-ink hover:border-ink/40"
+                                ? "cursor-not-allowed border-line bg-sky-soft text-muted/40 line-through"
+                                : "border-line bg-white text-ink hover:border-brand-300"
                           }`}
                         >
                           {faDigits(slot)}
@@ -543,9 +543,9 @@ export function AppointmentForm() {
                 ) : null}
               </div>
 
-              <div className="mt-5 flex flex-wrap items-center gap-4 rounded-xl bg-paper px-4 py-3 text-[10px] text-muted">
+              <div className="mt-5 flex flex-wrap items-center gap-4 rounded-xl bg-sky-soft px-4 py-3 text-[10px] text-muted">
                 <span className="inline-flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-ink" />
+                  <span className="h-2 w-2 rounded-full bg-brand-600" />
                   انتخاب‌شده
                 </span>
                 <span className="inline-flex items-center gap-1.5">
@@ -681,7 +681,7 @@ export function AppointmentForm() {
                 </div>
               </div>
 
-              <div className="mt-5 rounded-xl border border-line bg-paper p-4">
+              <div className="mt-5 rounded-xl border border-line bg-sky-soft p-4">
                 <p className="text-[10px] font-semibold text-ink">خلاصه نوبت</p>
                 <div className="mt-3 grid gap-2 text-[10px] text-muted sm:grid-cols-2">
                   <span>
@@ -717,7 +717,7 @@ export function AppointmentForm() {
                   checked={consent}
                   onChange={(event) => setConsent(event.target.checked)}
                   aria-invalid={Boolean(errors.consent)}
-                  className="mt-0.5 h-4 w-4 shrink-0 rounded border-line-strong accent-forest-600"
+                  className="mt-0.5 h-4 w-4 shrink-0 rounded border-line-strong accent-brand-600"
                 />
                 <span>
                   قوانین کلینیک را می‌پذیرم و تأیید می‌کنم اطلاعات واردشده صحیح
@@ -743,7 +743,7 @@ export function AppointmentForm() {
               مرحله قبل
             </button>
 
-            <button type="submit" className="btn btn-dark btn-sm">
+            <button type="submit" className="btn btn-primary btn-sm">
               {step === 3 ? "ثبت نوبت" : "مرحله بعد"}
               <Icon
                 name={step === 3 ? "check" : "arrowLeft"}
@@ -755,7 +755,7 @@ export function AppointmentForm() {
       </div>
 
       {ready && appointments.length > 0 ? (
-        <div className="rounded-3xl border border-line bg-white p-6 sm:p-8">
+        <div className="rounded-2xl border border-line bg-white shadow-card p-6 sm:p-8">
           <div className="flex items-center justify-between gap-3">
             <h2 className="text-sm font-bold text-ink">نوبت‌های من</h2>
             <span className="chip">{faDigits(appointments.length)} نوبت</span>
@@ -796,7 +796,7 @@ export function AppointmentForm() {
                       <button
                         type="button"
                         onClick={() => setCancelId(null)}
-                        className="rounded-full border border-line px-3 py-1.5 text-[10px] font-semibold text-ink-soft transition hover:bg-paper"
+                        className="rounded-full border border-line px-3 py-1.5 text-[10px] font-semibold text-ink-soft transition hover:bg-sky-soft"
                       >
                         انصراف
                       </button>
@@ -822,9 +822,9 @@ export function AppointmentForm() {
         </div>
       ) : null}
 
-      <div className="rounded-3xl border border-line bg-white p-6 sm:p-8">
+      <div className="rounded-2xl border border-line bg-white shadow-card p-6 sm:p-8">
         <div className="flex items-center gap-2">
-          <Icon name="info" className="h-4 w-4 text-forest-600" />
+          <Icon name="info" className="h-4 w-4 text-brand-600" />
           <h2 className="text-sm font-bold text-ink">
             نکات مهم پیش از مراجعه
           </h2>
@@ -837,7 +837,7 @@ export function AppointmentForm() {
             >
               <Icon
                 name="check"
-                className="mt-0.5 h-3 w-3 shrink-0 text-forest-600"
+                className="mt-0.5 h-3 w-3 shrink-0 text-brand-600"
               />
               {note}
             </li>

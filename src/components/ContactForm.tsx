@@ -49,21 +49,21 @@ export function ContactForm() {
 
   if (sent) {
     return (
-      <div className="flex h-full flex-col items-center justify-center rounded-3xl border border-line bg-white p-8 text-center sm:p-12">
-        <span className="grid h-14 w-14 place-items-center rounded-full bg-forest-100 text-forest-700">
+      <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-line bg-white p-8 text-center shadow-card sm:p-10">
+        <span className="grid h-14 w-14 place-items-center rounded-full bg-mint-100 text-mint-700">
           <Icon name="checkCircle" className="h-7 w-7" />
         </span>
         <h2 className="mt-5 text-xl font-extrabold tracking-tight text-ink">
           پیامت ثبت شد.
         </h2>
-        <p className="mt-3 max-w-sm text-sm leading-7 text-muted">
+        <p className="mt-3 max-w-sm text-xs leading-6 text-muted">
           همکاران ما در ساعات کاری پیام را بررسی می‌کنند و در صورت نیاز با
           شماره {phone} تماس می‌گیرند.
         </p>
-        <p className="mt-4 rounded-xl bg-paper px-4 py-2 text-[10px] text-muted">
+        <p className="mt-4 rounded-xl bg-sky-soft px-4 py-2 text-[9px] text-muted">
           این فرم نمایشی است و پیامی به کلینیک ارسال نمی‌شود.
         </p>
-        <button type="button" onClick={reset} className="btn btn-dark btn-sm mt-6">
+        <button type="button" onClick={reset} className="btn btn-primary btn-sm mt-5">
           ارسال پیام جدید
         </button>
       </div>
@@ -77,18 +77,23 @@ export function ContactForm() {
         event.preventDefault();
         submit();
       }}
-      className="rounded-3xl border border-line bg-white p-6 sm:p-8"
+      className="rounded-2xl border border-line bg-white p-5 shadow-card sm:p-6"
     >
-      <div>
-        <h2 className="text-lg font-extrabold tracking-tight text-ink">
-          برای ما پیام بگذار.
-        </h2>
-        <p className="mt-1.5 text-[11px] text-muted">
-          در اولین فرصت کاری پاسخ می‌دهیم.
-        </p>
+      <div className="flex items-center gap-2.5">
+        <span className="grid h-9 w-9 place-items-center rounded-xl bg-brand-50 text-brand-600">
+          <Icon name="mail" className="h-4 w-4" />
+        </span>
+        <div>
+          <h2 className="text-[15px] font-extrabold tracking-tight text-ink">
+            برای ما پیام بگذار.
+          </h2>
+          <p className="mt-0.5 text-[9.5px] text-muted">
+            در اولین فرصت کاری پاسخ می‌دهیم.
+          </p>
+        </div>
       </div>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+      <div className="mt-5 grid gap-3.5 sm:grid-cols-2">
         <div>
           <label htmlFor="contact-name" className="label">
             نام و نام خانوادگی <span className="text-red-500">*</span>
@@ -162,7 +167,7 @@ export function ContactForm() {
             className="field appearance-none bg-[length:16px] bg-[position:left_1rem_center] bg-no-repeat"
             style={{
               backgroundImage:
-                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236f766f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
+                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
             }}
           >
             {subjects.map((item) => (
@@ -199,19 +204,19 @@ export function ContactForm() {
               {errors.message}
             </p>
           ) : (
-            <p className="mt-1.5 text-[10px] text-muted">
+            <p className="mt-1.5 text-[9px] text-muted">
               {message.length} از ۷۰۰ حرف
             </p>
           )}
         </div>
       </div>
 
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-        <p className="flex items-center gap-1.5 text-[10px] text-muted">
-          <Icon name="lock" className="h-3.5 w-3.5 text-forest-600" />
+      <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
+        <p className="flex items-center gap-1.5 text-[9px] text-muted">
+          <Icon name="lock" className="h-3.5 w-3.5 text-brand-500" />
           اطلاعات تو محرمانه می‌ماند.
         </p>
-        <button type="submit" className="btn btn-dark btn-sm">
+        <button type="submit" className="btn btn-primary btn-sm">
           ارسال پیام
           <Icon name="arrowLeft" className="h-3.5 w-3.5" />
         </button>

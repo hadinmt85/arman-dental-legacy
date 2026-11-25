@@ -12,30 +12,33 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="border-t border-line">
+    <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-card">
       {items.map((item, index) => {
         const isOpen = openIndex === index;
 
         return (
-          <div key={item.q} className="border-b border-line">
+          <div
+            key={item.q}
+            className="border-b border-line last:border-b-0"
+          >
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : index)}
               aria-expanded={isOpen}
-              className="flex w-full items-start justify-between gap-6 py-6 text-right"
+              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-right transition hover:bg-sky-soft"
             >
               <span
-                className={`text-sm font-semibold transition sm:text-base ${
-                  isOpen ? "text-ink" : "text-ink-soft"
+                className={`text-[12px] font-semibold transition sm:text-[13px] ${
+                  isOpen ? "text-brand-700" : "text-ink-soft"
                 }`}
               >
                 {item.q}
               </span>
               <span
-                className={`mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border transition duration-300 ${
+                className={`grid h-6 w-6 shrink-0 place-items-center rounded-full border transition duration-300 ${
                   isOpen
-                    ? "border-ink bg-ink text-white"
-                    : "border-line text-muted"
+                    ? "border-brand-600 bg-brand-600 text-white"
+                    : "border-line bg-white text-muted"
                 }`}
               >
                 <Icon
@@ -53,7 +56,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="max-w-2xl pb-6 text-sm leading-8 text-muted">
+                <p className="max-w-2xl px-5 pb-5 text-[11px] leading-6 text-muted">
                   {item.a}
                 </p>
               </div>
